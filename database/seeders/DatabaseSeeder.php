@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleTableSeeder::class, //seed role before user
             UserTableSeeder::class,
-            //CompanyTableSeeder::class,
+            CompanyTableSeeder::class,
             //EmployeeTableSeeder::class,
         ]);
         

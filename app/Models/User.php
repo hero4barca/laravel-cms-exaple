@@ -65,4 +65,9 @@ class User extends Authenticatable
     {
         return (bool) $this->role()->where('name', $role)->first();
     }
+
+    public function company()
+    {
+        return $this->hasOne(Company::class)->withDefault();
+    }
 }
