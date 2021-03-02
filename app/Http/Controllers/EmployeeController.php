@@ -2,28 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
+use App\Models\Employee;
 use Illuminate\Http\Request;
-use App\Http\Resources\CompanyResource;
-use Validator;
 
-class CompanyController extends Controller
+class EmployeeController extends Controller
 {
-
-    /** retures a list of all companies */
-    public function all()
-    {
-        return view('landing', [
-            'companies' => Company::latest()->paginate(5)
-        ]);
-    }
-
-    public function getSingle(Company $company)
-    {   
-        
-        return view('company', compact('company'));
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -32,7 +15,6 @@ class CompanyController extends Controller
     public function index()
     {
         //
-        return CompanyResource::collection(Company::latest()->paginate(5));
     }
 
     /**
@@ -45,15 +27,24 @@ class CompanyController extends Controller
         //
     }
 
-    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Company  $company
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show(Company $company)
+    public function show(Employee $employee)
     {
         //
     }
@@ -61,10 +52,10 @@ class CompanyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Company  $company
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function edit(Company $company)
+    public function edit(Employee $employee)
     {
         //
     }
@@ -73,10 +64,10 @@ class CompanyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Company  $company
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(Request $request, Employee $employee)
     {
         //
     }
@@ -84,10 +75,10 @@ class CompanyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Company  $company
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Company $company)
+    public function destroy(Employee $employee)
     {
         //
     }
