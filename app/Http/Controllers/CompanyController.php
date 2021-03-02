@@ -7,6 +7,21 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
+
+    /** retures a list of all companies */
+    public function all()
+    {
+        return view('landing', [
+            'companies' => Company::latest()->paginate(5)
+        ]);
+    }
+
+    public function getSingle(Company $company)
+    {   
+        
+        return view('company', compact('company'));
+    }
+
     /**
      * Display a listing of the resource.
      *
