@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             RoleTableSeeder::class, //seed role before user
             UserTableSeeder::class,
             CompanyTableSeeder::class,
-            //EmployeeTableSeeder::class,
+            EmployeeTableSeeder::class,
         ]);
         
     }
