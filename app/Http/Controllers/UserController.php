@@ -78,6 +78,35 @@ class UserController extends Controller
     }
 
     /**
+     * Update the password of specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function change_password(Request $request, User $user)
+    {
+        $validator = Validator::make($request->all(), 
+        [
+            'password'=> 'required|confirmed',        
+        ]);
+
+
+        if ($validator->fails()) {          
+            return response()->json(['error'=>$validator->errors()], 401);                        
+        } 
+
+        $new_password = bcrypt($request->password);
+        $user->update(['password' => $new_password]);
+
+        return response()->json([
+            "success" => true,
+            "message" => " password successfully changed",
+            
+        ]);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id

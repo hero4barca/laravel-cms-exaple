@@ -52,15 +52,15 @@ class Controller extends BaseController
         [
             'name' => 'required',
             'email' => 'required|unique:users,email',
-            'password'=> 'required',
+            
         
         ]);
 
         if ($validator->fails()) {          
             return response()->json(['error'=>$validator->errors()], 401);                        
-         }  
+        }  
 
-        $user->update($request->only(['name', 'email', 'password']));
+        $user->update($request->only(['name', 'email']));
 
         return new UserResource($user);
     }

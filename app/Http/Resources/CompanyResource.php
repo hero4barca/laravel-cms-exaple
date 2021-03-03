@@ -19,12 +19,12 @@ class CompanyResource extends JsonResource
         if ($this->logo)
             { 
             $logo_path = '/uploads/companies/'.$this->logo;     
-            $logo_url = asset($logo_path);
-            //$logo_url = Storage::disk('public')->url($this->logo);
+            $logo_url = asset($logo_path);// generate the url for logo image
+            
             }
         else
          $logo_url=null;
-        #$logo_url = Storage::url('upload/companies/'.$this->logo);
+        
 
 
         return [
