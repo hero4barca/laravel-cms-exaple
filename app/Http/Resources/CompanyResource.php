@@ -17,7 +17,11 @@ class CompanyResource extends JsonResource
     public function toArray($request)
     {   
         if ($this->logo)
-            $logo_url = Storage::disk('public')->url($this->logo);
+            { 
+            $logo_path = '/uploads/companies/'.$this->logo;     
+            $logo_url = asset($logo_path);
+            //$logo_url = Storage::disk('public')->url($this->logo);
+            }
         else
          $logo_url=null;
         #$logo_url = Storage::url('upload/companies/'.$this->logo);
@@ -29,7 +33,8 @@ class CompanyResource extends JsonResource
             'email' => $this->user->email,
             'user_id' =>$this->user->id,
             'url' => $this->url,
-            'logo' => $logo_url,
+            'logo_file' => $this->logo,
+            'logo_url' => $logo_url,
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
         ];

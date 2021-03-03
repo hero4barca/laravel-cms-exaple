@@ -21,6 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('companies', 'App\Http\Controllers\CompanyController');
 
 Route::apiResource('employees', 'App\Http\Controllers\EmployeeController');
-Route::patch('/employees/{employee}', 'App\Http\Controllers\EmployeeController@set_company');
+Route::patch('/employees/{employee}/set_company', 'App\Http\Controllers\EmployeeController@set_company');
 
 Route::apiResources(['users' => 'App\Http\Controllers\UserController'], ['except' => ['delete']]);
