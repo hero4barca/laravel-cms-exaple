@@ -93,6 +93,29 @@ class EmployeeController extends Controller
     }
 
     /**
+     * Set an employees company
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Employee  $employee
+     * @return \Illuminate\Http\Response
+     */
+    public function set_company(Request $request, Employee $employee)
+    {
+        $validator = Validator::make($request->all(), 
+        [ 
+          'company_id' => 'required|exists:App\Models\Company,id',
+        ]);  
+       
+        if ($validator->fails()) {          
+          return response()->json(['error'=>$validator->errors()], 401);                        
+        }  
+
+        $employee->update($request->only(['company_id']));
+
+        return new EmployeeResource($employee);
+
+    }
+
+    /**
      * Display the specified resource. API show
      *
      * @param  \App\Models\Employee  $employee
