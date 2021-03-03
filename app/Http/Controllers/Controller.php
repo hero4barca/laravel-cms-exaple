@@ -50,7 +50,9 @@ class Controller extends BaseController
     public function update_user(Request $request, User $user){
         $validator = Validator::make($request->all(), 
         [
-            'name' => 'required',//only the user's name can be modified by update
+            'name' => 'required',
+            'email' => 'required|unique:users,email',
+            'password'=> 'required',
         
         ]);
 
@@ -58,7 +60,7 @@ class Controller extends BaseController
             return response()->json(['error'=>$validator->errors()], 401);                        
          }  
 
-        $user->update($request->only(['name']));
+        $user->update($request->only(['name', 'email', 'password']));
 
         return new UserResource($user);
     }

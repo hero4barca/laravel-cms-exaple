@@ -7,6 +7,7 @@ use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\CompanyResource;
+use App\Models\Role;
 use Validator;
 
 class CompanyController extends Controller
@@ -92,6 +93,10 @@ class CompanyController extends Controller
             $company->logo = $new_filename; //or logo path??  
         }
 
+        //get company role id form role model
+        $company_role_id = Role::where('name', 'company') ->value('id');
+        $request->request->set('role_id', $company_role_id);
+
         $storeUserResponse = $this->store_user($request);
 
         if(isset($storeUserResponse->id))  // if the response is a serialized user object
@@ -149,14 +154,14 @@ class CompanyController extends Controller
          [
             'url' => 'required',
             'logo' => 'required|mimes:jpeg,png,jpg,gif,svg',
-            'name' => 'required',
-                       
+                                   
         ]);
 
         if ($validator->fails()) {          
             return response()->json(['error'=>$validator->errors()], 401);                        
          }  
 
+         //update the corresponding user object
         $companyUser = User::find($company->user_id);
         $updateUserResponse = $this->update_user($request, $companyUser);
          

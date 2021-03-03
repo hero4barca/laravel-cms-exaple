@@ -32,12 +32,12 @@ class UserController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     *  the caller of this function provide the role_id in the request object 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         return $this->store_user($request);
 
     }

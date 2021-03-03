@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\Company;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Resources\EmployeeResource;
-use validator;
+use Validator;
 
 class EmployeeController extends Controller
 {
@@ -66,7 +67,10 @@ class EmployeeController extends Controller
                 return response()->json(['error'=>$validator->errors()], 401);                        
              }  
 
-        
+        //get employee role id from role model
+        $employee_role_id = Role::where('name', 'employee') ->value('id');
+        $request->request->set('role_id', $employee_role_id); 
+
         $storeUserResponse  = $this->store_user($request);
 
         if(isset($storeUserResponse->id))  // if the response is a serialized user object
@@ -131,21 +135,21 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
-        $validator = Validator::make($request->all(), 
-            [
-                'company_id' => 'required|exists:App\Models\Company,id',
-                
-            ]
-        );
+        //update the corresponding user object
+        $employeeUser = User::find($employee->user_id);
+        $updateUserResponse = $this->update_user($request, $employeeUser);
+         
+        
+        if(isset($updateUserResponse->id))  // if the response is a serialized user object
+        {
 
-        if ($validator->fails()) {          
-            return response()->json(['error'=>$validator->errors()], 401);                        
-         } 
-
-        $employee->update($request->only([ 'company_id']));
-
-        return new EmployeeResource($employee);
+            
+            return new EmployeeResource($employee);
+        }
+        else // return the response from update_user to the caller; error mgs for user fields
+            {
+                return $updateUserResponse;
+            }
     }
 
     /**
