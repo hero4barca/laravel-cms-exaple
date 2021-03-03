@@ -49,6 +49,24 @@ class CompanyController extends Controller
         //
     }
 
+    private function store_logo(Request $request)
+    {
+        
+            $logo = $request->file('logo');
+            
+            //filename = companyname_uploadtime.extension
+            $time_str = (string)time();
+            $new_filename = $request->name.'_'.$time_str;            
+            $new_filename = str_slug($new_filename).'.'.$logo->getClientOriginalExtension();
+
+
+            $destinationPath = public_path('/uploads/companies');
+            $logoPath = $destinationPath . "/" . $new_filename;
+            $logo->move($destinationPath, $new_filename);
+
+            return $new_filename; //or logo path??  
+        
+    }
     /**
      * Store a newly created resource in storage.
      * created resource in storage.
@@ -58,12 +76,7 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        /*$this->validate($request, [           
-
-            'url' => 'required',                      
-            'logo' => 'required|mimes:jpeg,png,jpg,gif,svg',
-        ]);*/
+        
 
         $validator = Validator::make($request->all(), 
               [ 
@@ -77,20 +90,9 @@ class CompanyController extends Controller
 
         $company = new Company();
 
+        //handle file storage for logo image
         if ($request->hasFile('logo')) {
-            $logo = $request->file('logo');
-            
-            //filename = companyname_uploadtime.extension
-            $time_str = (string)time();
-            $new_filename = $request->name.'_'.$time_str;            
-            $new_filename = str_slug($new_filename).'.'.$logo->getClientOriginalExtension();
-
-
-            $destinationPath = public_path('/uploads/companies');
-            $logoPath = $destinationPath . "/" . $new_filename;
-            $logo->move($destinationPath, $new_filename);
-
-            $company->logo = $new_filename; //or logo path??  
+            $company->logo = $this-> store_logo($request);
         }
 
         //get company role id form role model
@@ -167,8 +169,12 @@ class CompanyController extends Controller
          
         if(isset($updateUserResponse->id))  // if the response is a serialized user object
         {
+            $new_url = $request->url;
+            $new_logo = $this->store_logo($request);
 
-            $company->update($request->only(['url', 'logo']));
+            
+            $company->update(['url' => $new_url]);
+            $company->update(['logo' => $new_logo]);
 
             return new CompanyResource($company);
         }
