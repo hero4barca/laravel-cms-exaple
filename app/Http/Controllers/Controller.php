@@ -16,7 +16,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function storeUser(Request $request)
+    public function store_user(Request $request)
     {
         
         $validator = Validator::make($request->all(), 
@@ -45,5 +45,21 @@ class Controller extends BaseController
 
         return new UserResource($user);
 
+    }
+
+    public function update_user(Request $request, User $user){
+        $validator = Validator::make($request->all(), 
+        [
+            'name' => 'required',//only the user's name can be modified by update
+        
+        ]);
+
+        if ($validator->fails()) {          
+            return response()->json(['error'=>$validator->errors()], 401);                        
+         }  
+
+        $user->update($request->only(['name']));
+
+        return new UserResource($user);
     }
 }

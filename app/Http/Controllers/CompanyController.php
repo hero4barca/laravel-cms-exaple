@@ -78,17 +78,21 @@ class CompanyController extends Controller
 
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo');
-    
             
-            $name = (string)time();
-            $name = str_slug($name).'.'.$logo->getClientOriginalExtension();
+            //filename = companyname_uploadtime.extension
+            $time_str = (string)time();
+            $new_filename = $request->name.'_'.$time_str;            
+            $new_filename = str_slug($new_filename).'.'.$logo->getClientOriginalExtension();
+
+
             $destinationPath = public_path('/uploads/companies');
-            $logoPath = $destinationPath . "/" . $name;
-            $logo->move($destinationPath, $name);
-            $company->logo = $name; //or logo path??  
+            $logoPath = $destinationPath . "/" . $new_filename;
+            $logo->move($destinationPath, $new_filename);
+
+            $company->logo = $new_filename; //or logo path??  
         }
 
-        $storeUserResponse = $this->storeUser($request);
+        $storeUserResponse = $this->store_user($request);
 
         if(isset($storeUserResponse->id))  // if the response is a serialized user object
         {
@@ -145,6 +149,7 @@ class CompanyController extends Controller
          [
             'url' => 'required',
             'logo' => 'required|mimes:jpeg,png,jpg,gif,svg',
+            'name' => 'required',
                        
         ]);
 
@@ -152,10 +157,22 @@ class CompanyController extends Controller
             return response()->json(['error'=>$validator->errors()], 401);                        
          }  
 
-        
-        $company->update($request->only(['url', 'logo']));
+        $companyUser = User::find($company->user_id);
+        $updateUserResponse = $this->update_user($request, $companyUser);
+         
+        if(isset($updateUserResponse->id))  // if the response is a serialized user object
+        {
 
-        return new CompanyResource($company);
+            $company->update($request->only(['url', 'logo']));
+
+            return new CompanyResource($company);
+        }
+        else // return the response from update_user to the caller; error mgs for user fields
+            {
+                return $updateUserResponse;
+            }
+        
+       
     }
 
 

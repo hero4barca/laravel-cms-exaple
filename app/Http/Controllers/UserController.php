@@ -38,7 +38,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->storeUser($request);
+        return $this->store_user($request);
 
     }
 
@@ -74,20 +74,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
-        $validator = Validator::make($request->all(), 
-        [
-            'name' => 'required',
-            'email' => 'required',
-        ]);
-
-        if ($validator->fails()) {          
-            return response()->json(['error'=>$validator->errors()], 401);                        
-         }  
-
-        $user->update($request->only(['name', 'email']));
-
-        return new UserResource($user);
+        return $this->update_user($request, $user);
     }
 
     /**

@@ -16,7 +16,7 @@ class EmployeeTableSeeder extends Seeder
     public function run()
     {
         //
-
+        
         $employee = new Employee();
         $employee -> user_id = User::where('name', 'First Employee') ->value('id');
         

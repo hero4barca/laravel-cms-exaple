@@ -67,7 +67,7 @@ class EmployeeController extends Controller
              }  
 
         
-        $storeUserResponse  = $this->storeUser($request);
+        $storeUserResponse  = $this->store_user($request);
 
         if(isset($storeUserResponse->id))  // if the response is a serialized user object
         {
