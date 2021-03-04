@@ -9,6 +9,14 @@
     <title>LaravelCMS</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <style> 
+    .img-responsive {
+
+      width: 40%;
+      height: auto;
+      align-self: center;
+
+    }
+    
     body {
       padding-top: 54px;
     }
@@ -17,6 +25,7 @@
           padding-top: 56px;
       }
     }
+
     </style>
   </head>
   <body>
