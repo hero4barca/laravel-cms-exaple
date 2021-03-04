@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script> window.Laravel = { csrfToken: 'csrf_token() ' } </script>
-    <title> Welcome to the dashboard </title>
+    <title> Welcome to the Admin dashboard </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <style>
         html, body {
