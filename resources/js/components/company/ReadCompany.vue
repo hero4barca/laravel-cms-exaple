@@ -10,6 +10,7 @@
                     </button>
                 </router-link>
          </div>
+         <p>This is the para</p>
           <div>
             <p class="border p-3" v-for="company in companies">
                Company Name: {{ company.name }} 

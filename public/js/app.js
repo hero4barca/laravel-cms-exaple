@@ -2038,6 +2038,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     this.getCompanies();
@@ -2084,8 +2085,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _components_Homepage_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Homepage.vue */ "./resources/js/components/Homepage.vue");
-/* harmony import */ var _components_company_ReadCompany_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/company/ReadCompany.vue */ "./resources/js/components/company/ReadCompany.vue");
+/* harmony import */ var _components_Homepage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Homepage */ "./resources/js/components/Homepage.vue");
+/* harmony import */ var _components_company_ReadCompany__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/company/ReadCompany */ "./resources/js/components/company/ReadCompany.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -2097,8 +2098,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__.default({
   mode: 'history',
   routes: [{
     path: '/admin/dashboard',
-    name: 'read-company',
-    component: _components_company_ReadCompany_vue__WEBPACK_IMPORTED_MODULE_1__.default,
+    name: 'read',
+    component: _components_company_ReadCompany__WEBPACK_IMPORTED_MODULE_1__.default,
     props: true
   }]
 });
@@ -2106,7 +2107,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
   el: '#app',
   router: router,
   components: {
-    Homepage: _components_Homepage_vue__WEBPACK_IMPORTED_MODULE_0__.default
+    Homepage: _components_Homepage__WEBPACK_IMPORTED_MODULE_0__.default
   }
 });
 
@@ -20174,7 +20175,7 @@ var render = function() {
                 "router-link",
                 {
                   attrs: {
-                    to: { name: "read-company", params: { userId: _vm.userId } }
+                    to: { name: "read", params: { userId: _vm.userId } }
                   }
                 },
                 [_vm._v("\n             Company\n           ")]
@@ -20287,6 +20288,8 @@ var render = function() {
       ],
       1
     ),
+    _vm._v(" "),
+    _c("p", [_vm._v("This is the para")]),
     _vm._v(" "),
     _c(
       "div",

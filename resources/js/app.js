@@ -2,11 +2,8 @@ require('./bootstrap');
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Homepage from './components/Homepage.vue'
-import ReadCompany from './components/company/ReadCompany.vue'
-import CreateCompany from './components/company/CreateCompany.vue'
-import UpdateCompany from './components/company/UpdateCompany.vue'
-
+import Homepage from './components/Homepage'
+import Read from './components/company/ReadCompany'
 
 Vue.use(VueRouter)
 
@@ -15,20 +12,8 @@ const router = new VueRouter({
     routes: [
         {
             path: '/admin/dashboard',
-            name: 'read-company',
-            component: ReadCompany,
-            props: true
-        },
-        {
-            path: '/admin/company/create',
-            name: 'create-company',
-            component: CreateCompany,
-            props: true
-        },
-        {
-            path: '/admin/company/update',
-            name: 'update-company',
-            component: UpdateCompany,
+            name: 'read',
+            component: Read,
             props: true
         },
     ],
@@ -39,4 +24,3 @@ const app = new Vue({
     router,
     components: { Homepage },
 });
-
