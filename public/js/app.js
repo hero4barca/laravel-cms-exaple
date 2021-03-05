@@ -1974,6 +1974,118 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/adminApp/company/CreateCompany.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/adminApp/company/CreateCompany.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {},
+  data: function data() {
+    return {
+      error: false,
+      successful: false,
+      errors: []
+    };
+  },
+  methods: {
+    create: function create() {
+      var _this = this;
+
+      var formData = new FormData();
+      formData.append("name", this.$refs.name.value);
+      formData.append("email", this.$refs.email.value);
+      formData.append("password", this.$refs.password.value);
+      formData.append("role_id", 2);
+      formData.append("logo", this.$refs.logo.files[0]);
+      formData.append("url", this.$refs.url.value);
+      axios.post("/api/companies", formData).then(function (response) {
+        _this.successful = true;
+        _this.error = false;
+        _this.errors = [];
+      })["catch"](function (error) {
+        if (!_.isEmpty(error.response)) {
+          if (error.response.status = 422) {
+            _this.errors = error.response.data.errors;
+            _this.successful = false;
+            _this.error = true;
+          }
+        }
+      });
+      this.$refs.name.value = "";
+      this.$refs.email.value = "";
+      this.$refs.password.value = "";
+      this.$refs.logo.value = "";
+      this.$refs.url.value = "";
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/adminApp/company/ReadCompany.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/adminApp/company/ReadCompany.vue?vue&type=script&lang=js& ***!
@@ -2094,27 +2206,34 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _adminApp_Homepage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./adminApp/Homepage */ "./resources/js/adminApp/Homepage.vue");
 /* harmony import */ var _adminApp_company_ReadCompany__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./adminApp/company/ReadCompany */ "./resources/js/adminApp/company/ReadCompany.vue");
+/* harmony import */ var _adminApp_company_CreateCompany__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./adminApp/company/CreateCompany */ "./resources/js/adminApp/company/CreateCompany.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_2__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_3__.default);
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__.default({
+
+vue__WEBPACK_IMPORTED_MODULE_3__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_4__.default);
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__.default({
   mode: 'history',
   routes: [{
     path: '/admin/dashboard',
-    name: 'read',
+    name: 'read-company',
     component: _adminApp_company_ReadCompany__WEBPACK_IMPORTED_MODULE_1__.default,
+    props: true
+  }, {
+    path: '/admin/create_company',
+    name: 'create-company',
+    component: _adminApp_company_CreateCompany__WEBPACK_IMPORTED_MODULE_2__.default,
     props: true
   }]
 });
-var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
+var app = new vue__WEBPACK_IMPORTED_MODULE_3__.default({
   el: '#app',
   router: router,
   components: {
@@ -20052,6 +20171,45 @@ component.options.__file = "resources/js/adminApp/Homepage.vue"
 
 /***/ }),
 
+/***/ "./resources/js/adminApp/company/CreateCompany.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/adminApp/company/CreateCompany.vue ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _CreateCompany_vue_vue_type_template_id_1b1fd6a0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateCompany.vue?vue&type=template&id=1b1fd6a0& */ "./resources/js/adminApp/company/CreateCompany.vue?vue&type=template&id=1b1fd6a0&");
+/* harmony import */ var _CreateCompany_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateCompany.vue?vue&type=script&lang=js& */ "./resources/js/adminApp/company/CreateCompany.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _CreateCompany_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _CreateCompany_vue_vue_type_template_id_1b1fd6a0___WEBPACK_IMPORTED_MODULE_0__.render,
+  _CreateCompany_vue_vue_type_template_id_1b1fd6a0___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/adminApp/company/CreateCompany.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/adminApp/company/ReadCompany.vue":
 /*!*******************************************************!*\
   !*** ./resources/js/adminApp/company/ReadCompany.vue ***!
@@ -20107,6 +20265,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/adminApp/company/CreateCompany.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/adminApp/company/CreateCompany.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateCompany_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CreateCompany.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/adminApp/company/CreateCompany.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateCompany_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/adminApp/company/ReadCompany.vue?vue&type=script&lang=js&":
 /*!********************************************************************************!*\
   !*** ./resources/js/adminApp/company/ReadCompany.vue?vue&type=script&lang=js& ***!
@@ -20149,6 +20323,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Homepage_vue_vue_type_template_id_cc2b2dc6_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Homepage_vue_vue_type_template_id_cc2b2dc6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Homepage.vue?vue&type=template&id=cc2b2dc6&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/adminApp/Homepage.vue?vue&type=template&id=cc2b2dc6&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/adminApp/company/CreateCompany.vue?vue&type=template&id=1b1fd6a0&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/adminApp/company/CreateCompany.vue?vue&type=template&id=1b1fd6a0& ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateCompany_vue_vue_type_template_id_1b1fd6a0___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateCompany_vue_vue_type_template_id_1b1fd6a0___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateCompany_vue_vue_type_template_id_1b1fd6a0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CreateCompany.vue?vue&type=template&id=1b1fd6a0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/adminApp/company/CreateCompany.vue?vue&type=template&id=1b1fd6a0&");
 
 
 /***/ }),
@@ -20212,7 +20403,7 @@ var render = function() {
                 "router-link",
                 {
                   attrs: {
-                    to: { name: "read", params: { userId: _vm.userId } }
+                    to: { name: "read-company", params: { userId: _vm.userId } }
                   }
                 },
                 [_vm._v("\n             Company\n           ")]
@@ -20228,7 +20419,10 @@ var render = function() {
                 "router-link",
                 {
                   attrs: {
-                    to: { name: "create", params: { userId: _vm.userId } }
+                    to: {
+                      name: "read-employee",
+                      params: { userId: _vm.userId }
+                    }
                   }
                 },
                 [_vm._v("\n             Emloyees\n           ")]
@@ -20244,7 +20438,7 @@ var render = function() {
                 "router-link",
                 {
                   attrs: {
-                    to: { name: "create", params: { userId: _vm.userId } }
+                    to: { name: "read-user", params: { userId: _vm.userId } }
                   }
                 },
                 [_vm._v("\n             Users\n           ")]
@@ -20274,6 +20468,166 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", [_c("router-view")], 1)
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/adminApp/company/CreateCompany.vue?vue&type=template&id=1b1fd6a0&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/adminApp/company/CreateCompany.vue?vue&type=template&id=1b1fd6a0& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("form", [
+      _c(
+        "div",
+        {
+          class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
+        },
+        [
+          _vm.successful
+            ? _c("span", { staticClass: "label label-sucess" }, [
+                _vm._v("Company created!")
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+        [
+          _vm.errors.name
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v("\n        " + _vm._s(_vm.errors.name[0]) + "\n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.errors.email
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v(
+                  " \n        " + _vm._s(_vm.errors.email[0]) + " \n      "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.errors.password
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v(
+                  " \n        " + _vm._s(_vm.errors.password[0]) + " \n      "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.errors.url
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v(" \n        " + _vm._s(_vm.errors.url[0]) + " \n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.errors.logo
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v(" \n        " + _vm._s(_vm.errors.logo[0]) + " \n      ")
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          ref: "name",
+          staticClass: "form-control",
+          attrs: {
+            type: "name",
+            id: "name",
+            placeholder: "Enter company name",
+            required: ""
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          ref: "email",
+          staticClass: "form-control",
+          attrs: {
+            type: "email",
+            id: "email",
+            placeholder: "Enter company email",
+            required: ""
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          ref: "password",
+          staticClass: "form-control",
+          attrs: {
+            type: "password",
+            id: "password",
+            placeholder: "password",
+            required: ""
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          ref: "url",
+          staticClass: "form-control",
+          attrs: {
+            type: "url",
+            id: "url",
+            placeholder: "Website url",
+            required: ""
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "custom-file mb-3" }, [
+        _c("input", {
+          ref: "logo",
+          staticClass: "custom-file-input",
+          attrs: { type: "file", name: "logo", id: "logo", required: "" }
+        }),
+        _vm._v(" "),
+        _c("label", { staticClass: "custom-file-label" }, [
+          _vm._v("Choose file...")
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary block",
+          attrs: { type: "submit" },
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.create($event)
+            }
+          }
+        },
+        [_vm._v("\n      Submit\n    ")]
+      )
     ])
   ])
 }

@@ -8,17 +8,17 @@
             <hr>
             <ul>
                <li>
-                 <router-link :to="{ name: 'read', params: { userId } }">
+                 <router-link :to="{ name: 'read-company', params: { userId } }">
                    Company
                  </router-link>
                </li>
                <li>
-                 <router-link :to="{ name: 'create', params: { userId } }">
+                 <router-link :to="{ name: 'read-employee', params: { userId } }">
                    Emloyees
                  </router-link>
                </li>
                <li>
-                 <router-link :to="{ name: 'create', params: { userId } }">
+                 <router-link :to="{ name: 'read-user', params: { userId } }">
                    Users
                  </router-link>
                 
