@@ -29,3 +29,5 @@ Route::get('/', 'App\Http\Controllers\CompanyController@all');
 Route::get('/companies/{company}', 'App\Http\Controllers\CompanyController@getSingle');
 
 Route::get('/admin/{any}', 'App\Http\Controllers\AdminController@index')->where('any', '.*');
+Route::get('/company/{any}', 'App\Http\Controllers\CompanyAccountController@index')->where('any', '.*');
+Route::get('/employee/{any}', 'App\Http\Controllers\EmployeeAccountController@index')->where('any', '.*');

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script> window.Laravel = { csrfToken: 'csrf_token() ' } </script>
-    <title> Company profile</title>
+    <title> Employee account</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <style>
         html, body {
@@ -20,7 +20,7 @@
     </style>
 </head>
 <body>
-  <p>This is the company profile</p>
+  <p>This is the employee profile</p>
   
     <div id="companyApp">
         <Homepage 
