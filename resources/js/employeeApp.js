@@ -2,7 +2,7 @@ require('./bootstrap');
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Homepage from './companyApp/CompanyHome.vue'
+import Homepage from './employeeApp/EmployeeHome.vue'
 //import Read from './components/Read'
 
 Vue.use(VueRouter)
@@ -20,7 +20,7 @@ const router = new VueRouter({
 });
 
 const app = new Vue({
-    el: '#companyApp',
+    el: '#employeeApp',
     router,
     components: { Homepage },
 });

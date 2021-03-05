@@ -20,14 +20,14 @@
     </style>
 </head>
 <body>
-  <p>This is the employee profile</p>
+ 
   
-    <div id="companyApp">
+    <div id="employeeApp">
         <Homepage 
           :user-name='@json(auth()->user()->name)' 
           :user-id='@json(auth()->user()->id)'
         ></Homepage>
       </div>
-  <script src="{{ asset('js/companyApp.js') }}"></script> 
+  <script src="{{ asset('js/employeeApp.js') }}"></script> 
 </body>
 </html>

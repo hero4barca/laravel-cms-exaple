@@ -2,8 +2,8 @@ require('./bootstrap');
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Homepage from './components/Homepage'
-import Read from './components/company/ReadCompany'
+import Homepage from './adminApp/Homepage'
+import Read from './adminApp/company/ReadCompany'
 
 Vue.use(VueRouter)
 
