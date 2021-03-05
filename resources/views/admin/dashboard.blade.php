@@ -19,6 +19,14 @@
             font-smoothing: antialiased;
             overflow: hidden;
             }
+            .details-div{
+              padding-bottom: 10px;
+              margin-bottom: 10px;
+              padding-top: 10px;
+              padding-left: 5px;
+              margin-top: 10px;
+              display: block;
+                        }
         </style>
     </head>
     <body>

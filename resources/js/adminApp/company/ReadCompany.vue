@@ -12,7 +12,8 @@
          </div>
          <p>This is the para</p>
           <div>
-            <p class="border p-3" v-for="company in companies">
+
+            <div class="border details-div" v-for="company in companies">
                Company Name: {{ company.name }} 
                <br/>
                Company Url: {{ company.url}} 
@@ -34,8 +35,10 @@
                 >
                     Delete
                 </button>
-            </p>
+                <br/>
             </div>
+
+          </div>
 
 
             <div>

@@ -1941,6 +1941,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     userId: {
@@ -1977,6 +1985,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
 //
 //
 //
@@ -2163,7 +2174,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Dosis:300|Lato:300,400,600,700|Roboto+Condensed:300,700|Open+Sans+Condensed:300,600|Open+Sans:400,300,600,700|Maven+Pro:400,700);"]);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n*[data-v-cc2b2dc6] {\n  box-sizing: border-box;\n}\nheader[data-v-cc2b2dc6] {\n  color: #d3d3d3;\n}\nnav[data-v-cc2b2dc6] {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  right: 82%;\n  left: 0;\n  padding: 22px;\n  border-right: 2px solid #161e23;\n}\nnav > header[data-v-cc2b2dc6] {\n  font-weight: 700;\n  font-size: 0.8rem;\n  text-transform: uppercase;\n}\nnav section[data-v-cc2b2dc6] {\n  font-weight: 600;\n}\nnav section header[data-v-cc2b2dc6] {\n  padding-top: 30px;\n}\nnav section ul[data-v-cc2b2dc6] {\n  list-style: none;\n  padding: 0px;\n}\nnav section ul a[data-v-cc2b2dc6] {\n  color: white;\n  text-decoration: none;\n  font-weight: bold;\n}\narticle[data-v-cc2b2dc6] {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  left: 18%;\n  overflow: auto;\n  border-left: 2px solid #2a3843;\n  padding: 20px;\n}\narticle > header[data-v-cc2b2dc6] {\n  height: 60px;\n  border-bottom: 1px solid #2a3843;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n*[data-v-cc2b2dc6] {\n  box-sizing: border-box;\n}\nheader[data-v-cc2b2dc6] {\n  color: #d3d3d3;\n}\nnav[data-v-cc2b2dc6] {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  right: 82%;\n  left: 0;\n  padding: 22px;\n  border-right: 2px solid #161e23;\n}\nnav > header[data-v-cc2b2dc6] {\n  font-weight: 700;\n  font-size: 0.8rem;\n  text-transform: uppercase;\n}\nnav section[data-v-cc2b2dc6] {\n  font-weight: 600;\n}\nnav section header[data-v-cc2b2dc6] {\n  padding-top: 30px;\n}\nnav section ul[data-v-cc2b2dc6] {\n  list-style: none;\n  padding: 0px;\n}\nnav section ul a[data-v-cc2b2dc6] {\n  color: white;\n  text-decoration: none;\n  font-weight: bold;\n}\narticle[data-v-cc2b2dc6] {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  left: 18%;\n  overflow: auto;\n  border-left: 2px solid #2a3843;\n  padding: 20px;\n}\narticle > header[data-v-cc2b2dc6] {\n  height: 60px;\n  border-bottom: 1px solid #2a3843;\n}\n.details-div[data-v-cc2b2dc6]{\n  padding-bottom: 10px;\n  margin-bottom: 10px;\n  padding-top: 10px;\n  margin-top: 10px;\n  display: block;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -20321,8 +20332,8 @@ var render = function() {
       "div",
       _vm._l(_vm.companies, function(company) {
         return _c(
-          "p",
-          { staticClass: "border p-3" },
+          "div",
+          { staticClass: "border details-div" },
           [
             _vm._v(
               "\n       Company Name: " + _vm._s(company.name) + " \n       "
@@ -20375,7 +20386,9 @@ var render = function() {
                 }
               },
               [_vm._v("\n            Delete\n        ")]
-            )
+            ),
+            _vm._v(" "),
+            _c("br")
           ],
           1
         )

@@ -93,6 +93,14 @@
         height: 60px;
         border-bottom: 1px solid #2a3843;
       }
+
+      .details-div{
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        padding-top: 10px;
+        margin-top: 10px;
+        display: block;
+      }
     </style>
     <script>
     export default {
