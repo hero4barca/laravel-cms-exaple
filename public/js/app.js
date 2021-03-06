@@ -2049,6 +2049,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {},
   data: function data() {
@@ -2067,19 +2068,23 @@ __webpack_require__.r(__webpack_exports__);
       formData.append("email", this.$refs.email.value);
       formData.append("password", this.$refs.password.value);
       formData.append("logo", this.$refs.logo.files[0]);
-      formData.append("url", this.$refs.url.value);
-      var axiosParams = {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json',
-          'Access-Control-Allow-Origin': 'always'
-        },
-        formData: formData
-      };
-      axios.post("/api/companies", axiosParams).then(function (response) {
+      formData.append("url", this.$refs.url.value); //const axiosParams = {
+      //    headers: {
+      //     'Content-Type': 'application/x-www-form-urlencoded',
+      //      'Accept': 'application/json',
+      //      'Access-Control-Allow-Origin': 'always', 
+      //    },
+      //  formData };
+
+      axios.post("/api/companies", formData).then(function (response) {
         _this.successful = true;
         _this.error = false;
         _this.errors = [];
+        _this.$refs.name.value = "";
+        _this.$refs.email.value = "";
+        _this.$refs.password.value = "";
+        _this.$refs.logo.value = "";
+        _this.$refs.url.value = "";
       })["catch"](function (error) {
         if (!_.isEmpty(error.response)) {
           if (error.response.status = 422) {
@@ -2089,11 +2094,6 @@ __webpack_require__.r(__webpack_exports__);
           }
         }
       });
-      this.$refs.name.value = "";
-      this.$refs.email.value = "";
-      this.$refs.password.value = "";
-      this.$refs.logo.value = "";
-      this.$refs.url.value = "";
     }
   }
 });
@@ -20726,7 +20726,9 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+        {
+          class: ["form-group m-1 p-3", _vm.errors.name ? "alert-danger" : ""]
+        },
         [
           _vm.errors.name
             ? _c("span", { staticClass: "label label-danger" }, [
@@ -20751,7 +20753,9 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+        {
+          class: ["form-group m-1 p-3", _vm.errors.email ? "alert-danger" : ""]
+        },
         [
           _vm.errors.email
             ? _c("span", { staticClass: "label label-danger" }, [
@@ -20778,7 +20782,12 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+        {
+          class: [
+            "form-group m-1 p-3",
+            _vm.errors.password ? "alert-danger" : ""
+          ]
+        },
         [
           _vm.errors.password
             ? _c("span", { staticClass: "label label-danger" }, [
@@ -20805,7 +20814,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+        { class: ["form-group m-1 p-3", _vm.errors.url ? "alert-danger" : ""] },
         [
           _vm.errors.url
             ? _c("span", { staticClass: "label label-danger" }, [
@@ -20830,7 +20839,9 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+        {
+          class: ["form-group m-1 p-3", _vm.errors.logo ? "alert-danger" : ""]
+        },
         [
           _vm.errors.logo
             ? _c("span", { staticClass: "label label-danger" }, [

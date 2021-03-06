@@ -6,7 +6,7 @@
             <span v-if="successful" class="label label-sucess">Company created!</span>
           </div>
 
-          <div :class="['form-group m-1 p-3', error ? 'alert-danger' : '']">
+          <div :class="['form-group m-1 p-3', errors.name ? 'alert-danger' : '']">
             <span v-if="errors.name" class="label label-danger">
               {{ errors.name[0] }}
             </span>
@@ -15,7 +15,7 @@
             <input type="name" ref="name" class="form-control" id="name" placeholder="Enter company name" required>
           </div>
 
-          <div :class="['form-group m-1 p-3', error ? 'alert-danger' : '']">
+          <div :class="['form-group m-1 p-3', errors.email ? 'alert-danger' : '']">
             <span v-if="errors.email" class="label label-danger"> 
               {{ errors.email[0] }} 
             </span>
@@ -24,7 +24,7 @@
             <input type="email" ref="email" class="form-control" id="email" placeholder="Enter company email" required>
           </div>
 
-          <div :class="['form-group m-1 p-3', error ? 'alert-danger' : '']">
+          <div :class="['form-group m-1 p-3', errors.password ? 'alert-danger' : '']">
             <span v-if="errors.password" class="label label-danger"> 
               {{ errors.password[0] }} 
             </span>
@@ -34,7 +34,7 @@
 
           </div>
 
-          <div :class="['form-group m-1 p-3', error ? 'alert-danger' : '']">
+          <div :class="['form-group m-1 p-3', errors.url ? 'alert-danger' : '']">
             <span v-if="errors.url" class="label label-danger"> 
               {{ errors.url[0] }} 
             </span>
@@ -45,7 +45,7 @@
           </div>
 
          
-          <div :class="['form-group m-1 p-3', error ? 'alert-danger' : '']">
+          <div :class="['form-group m-1 p-3', errors.logo ? 'alert-danger' : '']">
             <span v-if="errors.logo" class="label label-danger"> 
               {{ errors.logo[0] }} 
             </span>
@@ -60,9 +60,11 @@
           </button>
         </form>
       </div>
+
     </template>
 
      <script>
+       
     export default {
       props: {
         
@@ -88,20 +90,27 @@
           formData.append("logo", this.$refs.logo.files[0]);
           formData.append("url", this.$refs.url.value);
 
-          const axiosParams = {
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Accept': 'application/json',
-                'Access-Control-Allow-Origin': 'always', 
-              },
-            formData, };
+          //const axiosParams = {
+          //    headers: {
+          //     'Content-Type': 'application/x-www-form-urlencoded',
+          //      'Accept': 'application/json',
+          //      'Access-Control-Allow-Origin': 'always', 
+          //    },
+          //  formData };
 
           axios
-            .post("/api/companies", axiosParams)
+            .post("/api/companies", formData)
             .then(response => {
               this.successful = true;
               this.error = false;
               this.errors = [];
+
+
+              this.$refs.name.value = "";
+              this.$refs.email.value = "";
+              this.$refs.password.value = "";
+              this.$refs.logo.value = "";
+              this.$refs.url.value = "";
 
             })
             .catch(error => {
@@ -114,11 +123,7 @@
               }
             });
 
-          this.$refs.name.value = "";
-          this.$refs.email.value = "";
-          this.$refs.password.value = "";
-          this.$refs.logo.value = "";
-          this.$refs.url.value = "";
+          
         }
       }
     };
