@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 import Homepage from './adminApp/Homepage'
 import ReadCompany from './adminApp/company/ReadCompany'
 import CreateCompany from './adminApp/company/CreateCompany'
+import UpdateCompany from './adminApp/company/UpdateCompany'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,12 @@ const router = new VueRouter({
             path: '/admin/create_company',
             name: 'create-company',
             component: CreateCompany,
+            props: true
+        },
+        {
+            path: '/admin/update_company',
+            name: 'update-company',
+            component: UpdateCompany,
             props: true
         },
     ],

@@ -84,6 +84,9 @@ class CompanyController extends Controller
               [ 
                 'url' => 'required',                      
                 'logo' => 'required|mimes:jpeg,png,jpg,gif,svg',
+                'name' => 'required',
+                'email' => 'required|unique:users,email',
+                'password'=> 'required',
              ]);  
              
         if ($validator->fails()) {          
@@ -158,6 +161,9 @@ class CompanyController extends Controller
          [
             'url' => 'required',
             'logo' => 'required|mimes:jpeg,png,jpg,gif,svg',
+            'name' => 'required',
+            'email' => 'required|unique:users,email',
+            
                                    
         ]);
 

@@ -2042,6 +2042,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {},
   data: function data() {
@@ -2059,17 +2066,24 @@ __webpack_require__.r(__webpack_exports__);
       formData.append("name", this.$refs.name.value);
       formData.append("email", this.$refs.email.value);
       formData.append("password", this.$refs.password.value);
-      formData.append("role_id", 2);
       formData.append("logo", this.$refs.logo.files[0]);
       formData.append("url", this.$refs.url.value);
-      axios.post("/api/companies", formData).then(function (response) {
+      var axiosParams = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json',
+          'Access-Control-Allow-Origin': 'always'
+        },
+        formData: formData
+      };
+      axios.post("/api/companies", axiosParams).then(function (response) {
         _this.successful = true;
         _this.error = false;
         _this.errors = [];
       })["catch"](function (error) {
         if (!_.isEmpty(error.response)) {
           if (error.response.status = 422) {
-            _this.errors = error.response.data.errors;
+            _this.errors = error.response.data.error;
             _this.successful = false;
             _this.error = true;
           }
@@ -2198,6 +2212,127 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/adminApp/company/UpdateCompany.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/adminApp/company/UpdateCompany.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mounted: function mounted() {
+    this.getCompany();
+  },
+  props: {
+    companyId: {
+      type: Number,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      error: false,
+      successful: false,
+      errors: []
+    };
+  },
+  methods: {
+    update: function update() {
+      var _this = this;
+
+      var name = this.$refs.name.value;
+      var url = this.$refs.url.value;
+      var logo = this.$refs.logo.value;
+      var email = this.$refs.email.value;
+      axios.put("/api/companies/" + this.companyId, {
+        name: name,
+        email: email,
+        url: url,
+        logo: logo
+      }).then(function (response) {
+        _this.successful = true;
+        _this.error = false;
+        _this.errors = [];
+      })["catch"](function (error) {
+        if (!_.isEmpty(error.response)) {
+          if (error.response.status = 422) {
+            _this.errors = error.response.data.errors;
+            _this.successful = false;
+            _this.error = true;
+          }
+        }
+      });
+    },
+    getCompany: function getCompany() {
+      var _this2 = this;
+
+      axios.get("/api/companies/" + this.companyId).then(function (response) {
+        _this2.$refs.name.value = response.data.data.name;
+        _this2.$refs.email.value = response.data.data.email;
+        _this2.$refs.url.value = response.data.data.url;
+        _this2.$refs.logo.value = response.data.data.logo;
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -2206,11 +2341,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _adminApp_Homepage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./adminApp/Homepage */ "./resources/js/adminApp/Homepage.vue");
 /* harmony import */ var _adminApp_company_ReadCompany__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./adminApp/company/ReadCompany */ "./resources/js/adminApp/company/ReadCompany.vue");
 /* harmony import */ var _adminApp_company_CreateCompany__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./adminApp/company/CreateCompany */ "./resources/js/adminApp/company/CreateCompany.vue");
+/* harmony import */ var _adminApp_company_UpdateCompany__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./adminApp/company/UpdateCompany */ "./resources/js/adminApp/company/UpdateCompany.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -2218,8 +2354,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_3__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_4__.default);
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__.default({
+
+vue__WEBPACK_IMPORTED_MODULE_4__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_5__.default);
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_5__.default({
   mode: 'history',
   routes: [{
     path: '/admin/dashboard',
@@ -2231,9 +2368,14 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__.default({
     name: 'create-company',
     component: _adminApp_company_CreateCompany__WEBPACK_IMPORTED_MODULE_2__.default,
     props: true
+  }, {
+    path: '/admin/update_company',
+    name: 'update-company',
+    component: _adminApp_company_UpdateCompany__WEBPACK_IMPORTED_MODULE_3__.default,
+    props: true
   }]
 });
-var app = new vue__WEBPACK_IMPORTED_MODULE_3__.default({
+var app = new vue__WEBPACK_IMPORTED_MODULE_4__.default({
   el: '#app',
   router: router,
   components: {
@@ -20249,6 +20391,45 @@ component.options.__file = "resources/js/adminApp/company/ReadCompany.vue"
 
 /***/ }),
 
+/***/ "./resources/js/adminApp/company/UpdateCompany.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/adminApp/company/UpdateCompany.vue ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _UpdateCompany_vue_vue_type_template_id_fd3aea7a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdateCompany.vue?vue&type=template&id=fd3aea7a& */ "./resources/js/adminApp/company/UpdateCompany.vue?vue&type=template&id=fd3aea7a&");
+/* harmony import */ var _UpdateCompany_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateCompany.vue?vue&type=script&lang=js& */ "./resources/js/adminApp/company/UpdateCompany.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _UpdateCompany_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _UpdateCompany_vue_vue_type_template_id_fd3aea7a___WEBPACK_IMPORTED_MODULE_0__.render,
+  _UpdateCompany_vue_vue_type_template_id_fd3aea7a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/adminApp/company/UpdateCompany.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/adminApp/Homepage.vue?vue&type=script&lang=js&":
 /*!*********************************************************************!*\
   !*** ./resources/js/adminApp/Homepage.vue?vue&type=script&lang=js& ***!
@@ -20294,6 +20475,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReadCompany_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ReadCompany.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/adminApp/company/ReadCompany.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReadCompany_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/adminApp/company/UpdateCompany.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/adminApp/company/UpdateCompany.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateCompany_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UpdateCompany.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/adminApp/company/UpdateCompany.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateCompany_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -20357,6 +20554,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReadCompany_vue_vue_type_template_id_925fccd4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReadCompany_vue_vue_type_template_id_925fccd4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ReadCompany.vue?vue&type=template&id=925fccd4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/adminApp/company/ReadCompany.vue?vue&type=template&id=925fccd4&");
+
+
+/***/ }),
+
+/***/ "./resources/js/adminApp/company/UpdateCompany.vue?vue&type=template&id=fd3aea7a&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/adminApp/company/UpdateCompany.vue?vue&type=template&id=fd3aea7a& ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateCompany_vue_vue_type_template_id_fd3aea7a___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateCompany_vue_vue_type_template_id_fd3aea7a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateCompany_vue_vue_type_template_id_fd3aea7a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UpdateCompany.vue?vue&type=template&id=fd3aea7a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/adminApp/company/UpdateCompany.vue?vue&type=template&id=fd3aea7a&");
 
 
 /***/ }),
@@ -20518,34 +20732,6 @@ var render = function() {
             ? _c("span", { staticClass: "label label-danger" }, [
                 _vm._v("\n        " + _vm._s(_vm.errors.name[0]) + "\n      ")
               ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.email
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  " \n        " + _vm._s(_vm.errors.email[0]) + " \n      "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.password
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  " \n        " + _vm._s(_vm.errors.password[0]) + " \n      "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.url
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(" \n        " + _vm._s(_vm.errors.url[0]) + " \n      ")
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.logo
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(" \n        " + _vm._s(_vm.errors.logo[0]) + " \n      ")
-              ])
             : _vm._e()
         ]
       ),
@@ -20563,6 +20749,20 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
+      _c(
+        "div",
+        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+        [
+          _vm.errors.email
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v(
+                  " \n        " + _vm._s(_vm.errors.email[0]) + " \n      "
+                )
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("input", {
           ref: "email",
@@ -20575,6 +20775,20 @@ var render = function() {
           }
         })
       ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+        [
+          _vm.errors.password
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v(
+                  " \n        " + _vm._s(_vm.errors.password[0]) + " \n      "
+                )
+              ])
+            : _vm._e()
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("input", {
@@ -20589,6 +20803,18 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
+      _c(
+        "div",
+        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+        [
+          _vm.errors.url
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v(" \n        " + _vm._s(_vm.errors.url[0]) + " \n      ")
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("input", {
           ref: "url",
@@ -20601,6 +20827,18 @@ var render = function() {
           }
         })
       ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+        [
+          _vm.errors.logo
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v(" \n        " + _vm._s(_vm.errors.logo[0]) + " \n      ")
+              ])
+            : _vm._e()
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "custom-file mb-3" }, [
         _c("input", {
@@ -20660,11 +20898,7 @@ var render = function() {
       [
         _c(
           "router-link",
-          {
-            attrs: {
-              to: { name: "create-company", params: { userId: _vm.userId } }
-            }
-          },
+          { attrs: { to: { name: "create-company", params: {} } } },
           [
             _c(
               "button",
@@ -20680,8 +20914,6 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _c("p", [_vm._v("This is the para")]),
-    _vm._v(" "),
     _c(
       "div",
       _vm._l(_vm.companies, function(company) {
@@ -20689,22 +20921,26 @@ var render = function() {
           "div",
           { staticClass: "border details-div" },
           [
-            _vm._v(
-              "\n       Company Name: " + _vm._s(company.name) + " \n       "
-            ),
-            _c("br"),
-            _vm._v(
-              "\n       Company Url: " + _vm._s(company.url) + " \n       "
-            ),
-            _c("br"),
-            _vm._v(
-              " \n       Company Email: " + _vm._s(company.email) + "\n       "
-            ),
-            _c("br"),
-            _vm._v(
-              "\n       Created At: " + _vm._s(company.created_at) + "\n       "
-            ),
-            _c("br"),
+            _c("p", [
+              _vm._v(" Company Name: " + _vm._s(company.name) + " \n       "),
+              _c("br"),
+              _vm._v(
+                "\n       Company Url: " + _vm._s(company.url) + " \n       "
+              ),
+              _c("br"),
+              _vm._v(
+                " \n       Company Email: " +
+                  _vm._s(company.email) +
+                  "\n       "
+              ),
+              _c("br"),
+              _vm._v(
+                "\n       Created At: " +
+                  _vm._s(company.created_at) +
+                  "\n       "
+              ),
+              _c("br")
+            ]),
             _vm._v(" "),
             _c(
               "router-link",
@@ -20782,6 +21018,126 @@ var render = function() {
             [_vm._v("\n          Previous\n        ")]
           )
         : _vm._e()
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/adminApp/company/UpdateCompany.vue?vue&type=template&id=fd3aea7a&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/adminApp/company/UpdateCompany.vue?vue&type=template&id=fd3aea7a& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("form", [
+      _c(
+        "div",
+        {
+          class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
+        },
+        [
+          _vm.successful
+            ? _c("span", { staticClass: "label label-sucess" }, [
+                _vm._v("Updated!")
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+        [
+          _vm.errors.name
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v("\n        " + _vm._s(_vm.errors.name[0]) + "\n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.errors.email
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v("\n        " + _vm._s(_vm.errors.email[0]) + "\n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.errors.url
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v("\n        " + _vm._s(_vm.errors.url[0]) + "\n    ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.errors.logo
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v("\n        " + _vm._s(_vm.errors.logo[0]) + "\n      ")
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          ref: "name",
+          staticClass: "form-control",
+          attrs: { type: "name", id: "name", required: "" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          ref: "email",
+          staticClass: "form-control",
+          attrs: { type: "email", id: "email", required: "" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          ref: "url",
+          staticClass: "form-control",
+          attrs: { type: "url", id: "url", required: "" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "custom-file mb-3" }, [
+        _c("input", {
+          ref: "logo",
+          staticClass: "custom-file-input",
+          attrs: { type: "file", name: "logo", id: "logo", required: "" }
+        }),
+        _vm._v(" "),
+        _c("label", { staticClass: "custom-file-label" }, [_vm._v(_vm._s())])
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary block",
+          attrs: { type: "submit" },
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.update($event)
+            }
+          }
+        },
+        [_vm._v("\n      Submit\n    ")]
+      )
     ])
   ])
 }

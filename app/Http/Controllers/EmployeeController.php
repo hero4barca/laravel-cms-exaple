@@ -61,6 +61,9 @@ class EmployeeController extends Controller
         $validator = Validator::make($request->all(), 
               [ 
                 'company_id' => 'required|exists:App\Models\Company,id',
+                'name' => 'required',
+                'email' => 'required|unique:users,email',
+                'password'=> 'required',
              ]);  
              
         if ($validator->fails()) {          

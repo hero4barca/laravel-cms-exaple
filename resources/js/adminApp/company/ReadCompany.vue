@@ -4,24 +4,24 @@
         <div id="companies">
 
           <div>
-            <router-link :to="{ name: 'create-company', params: { userId } }">
+            <router-link :to="{ name: 'create-company', params:{} }">
                     <button type="button" class="p-1 mx-3 float-left btn btn-light">
                         New Company
                     </button>
                 </router-link>
          </div>
-         <p>This is the para</p>
+        
           <div>
 
             <div class="border details-div" v-for="company in companies">
-               Company Name: {{ company.name }} 
+              <p> Company Name: {{ company.name }} 
                <br/>
                Company Url: {{ company.url}} 
                <br/> 
                Company Email: {{ company.email}}
                <br/>
                Created At: {{company.created_at }}
-               <br/>
+               <br/> </p> 
 
                 <router-link :to="{ name: 'update-company', params: { companyId : company.id } }">
                     <button type="button" class="p-1 mx-3 float-right btn btn-light">

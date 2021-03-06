@@ -20,6 +20,7 @@
     </style>
 </head>
 <body>
+  
 <div id="companyApp">
   <Homepage 
     :user-name='@json(auth()->user()->name)' 
