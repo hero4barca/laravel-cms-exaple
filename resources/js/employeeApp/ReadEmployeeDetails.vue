@@ -59,7 +59,7 @@
       },
       methods: {
         getEmployee(address) {
-          axios.get(address ? address : "/api/employees/" + this.userId).then(response => {
+          axios.get(address ? address : "/api/employees/get_user_employee/" + this.userId).then(response => {
             this.employee = response.data.data;
             
           });

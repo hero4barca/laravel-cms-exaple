@@ -28,7 +28,7 @@ class CompanyController extends Controller
         return CompanyResource::collection(Company::latest()->paginate(5));
     }
 
-    public function employeesOfCompany(Request $request, User $user )
+    public function employees_of_company(Request $request, User $user )
     {
         $userCompany = Company::where('user_id', $user->id)->first();
 

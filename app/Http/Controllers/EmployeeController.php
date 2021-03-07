@@ -98,6 +98,13 @@ class EmployeeController extends Controller
 
     }
 
+    public function get_by_user(Request $request, User $user )
+    {
+        $employee = Employee::where('user_id', $user->id)->first();
+
+        return new EmployeeResource($employee);
+    }
+
     /**
      * Set an employees company
      * @param  \Illuminate\Http\Request  $request

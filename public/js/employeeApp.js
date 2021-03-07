@@ -2040,7 +2040,7 @@ __webpack_require__.r(__webpack_exports__);
     getEmployee: function getEmployee(address) {
       var _this = this;
 
-      axios.get(address ? address : "/api/employees/" + this.userId).then(function (response) {
+      axios.get(address ? address : "/api/employees/get_user_employee/" + this.userId).then(function (response) {
         _this.employee = response.data.data;
       });
     }
