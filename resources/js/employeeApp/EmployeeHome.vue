@@ -4,26 +4,20 @@
           <section>
             
             <a style="color: white" href="/">HOME</a>&nbsp; ||  &nbsp;
-            <a style="color: white" href="/admin/dashboard">Dashboard</a> 
+            <a style="color: white" href="/employee/profile">Dashboard</a> 
             <hr>
             <ul>
                <li>
-                 <router-link :to="{ name: 'read', params: { userId } }">
-                   Company
+                 <router-link :to="{ name: 'read-employee-details' }">
+                   Employee details
                  </router-link>
                </li>
                <li>
                  <router-link :to="{ name: 'create', params: { userId } }">
-                   Emloyees
+                   Update
                  </router-link>
-               </li>
-               <li>
-                 <router-link :to="{ name: 'create', params: { userId } }">
-                   Users
-                 </router-link>
-                
-               </li>
-               
+               </li>               
+                       
             </ul>
           </section>
         </nav>
@@ -33,7 +27,7 @@
             <p @click="logout" class="float-right mr-3" style="cursor: pointer">Logout</p>
           </header>
           <div> 
-            <router-view></router-view> 
+            <router-view v-bind="myProps"></router-view> 
           </div>
         </article>
       </div>
@@ -96,6 +90,11 @@
     </style>
     <script>
     export default {
+      computed: {
+            myProps() {
+              return { userId: this.userId, userName: this.userName }             
+            }
+          },
       props: {
         userId: {
           type: Number,

@@ -3,19 +3,20 @@ require('./bootstrap');
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Homepage from './employeeApp/EmployeeHome.vue'
-//import Read from './components/Read'
+import ReadEmployeeDetails from './employeeApp/ReadEmployeeDetails.vue'
+
 
 Vue.use(VueRouter)
 
 const router = new VueRouter({
     mode: 'history',
     routes: [
-        //{
-          //  path: '/admin/dashboard',
-          //  name: 'read',
-          //  component: Read,
-          //  props: true
-        //},
+        {
+          path: '/employee/profile',
+          name: 'read-employee-details',
+          component: ReadEmployeeDetails,
+          props: true
+        },
     ],
 });
 
