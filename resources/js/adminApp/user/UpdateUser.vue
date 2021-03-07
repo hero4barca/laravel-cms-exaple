@@ -44,7 +44,7 @@
         
       },
       props: {
-        userId: {
+        acctUserId: {
           type: Number,
           required: true
         }
@@ -72,7 +72,7 @@
             params: { name, email} };
 
           axios
-            .put("/api/users/" + this.userId, { name, email} )
+            .put("/api/users/" + this.acctUserId, { name, email} )
             .then(response => {
               this.successful = true;
               this.error = false;
@@ -89,7 +89,7 @@
             });
         },
         getUser() {
-          axios.get("/api/users/" + this.userId).then(response => {
+          axios.get("/api/users/" + this.acctUserId).then(response => {
             this.$refs.name.value = response.data.data.name;
             this.$refs.email.value = response.data.data.email;
             //this.$refs.logo.value = response.data.data.logo;

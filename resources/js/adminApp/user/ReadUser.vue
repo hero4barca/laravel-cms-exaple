@@ -25,7 +25,7 @@
                Created At: {{user.created_at }}
                <br/> </p> 
 
-                <router-link :to="{ name: 'update-user', params: { userId : user.id } }">
+                <router-link :to="{ name: 'update-user', params: { acctUserId : user.id } }">
                     <button type="button" class="p-1 mx-3 float-right btn btn-light">
                         Update
                     </button>

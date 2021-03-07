@@ -18,6 +18,17 @@
     export default {
         mounted() {
             console.log('example Component mounted.')
+        },
+        props: {
+        userId: {
+          type: Number,
+          required: true
+        },
+        userName: {
+          type: String,
+          required: true
         }
+      },
+
     }
 </script>

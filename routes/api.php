@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('companies', 'App\Http\Controllers\CompanyController');
+Route::get('/companies/{user}/company_employees', 'App\Http\Controllers\CompanyController@employeesOfCompany');
 
 Route::apiResource('employees', 'App\Http\Controllers\EmployeeController');
 Route::patch('/employees/{employee}/set_company', 'App\Http\Controllers\EmployeeController@set_company');

@@ -2806,10 +2806,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {},
   mounted: function mounted() {},
@@ -3027,7 +3023,7 @@ __webpack_require__.r(__webpack_exports__);
     this.getUser();
   },
   props: {
-    userId: {
+    acctUserId: {
       type: Number,
       required: true
     }
@@ -3056,7 +3052,7 @@ __webpack_require__.r(__webpack_exports__);
           email: email
         }
       };
-      axios.put("/api/users/" + this.userId, {
+      axios.put("/api/users/" + this.acctUserId, {
         name: name,
         email: email
       }).then(function (response) {
@@ -3076,7 +3072,7 @@ __webpack_require__.r(__webpack_exports__);
     getUser: function getUser() {
       var _this2 = this;
 
-      axios.get("/api/users/" + this.userId).then(function (response) {
+      axios.get("/api/users/" + this.acctUserId).then(function (response) {
         _this2.$refs.name.value = response.data.data.name;
         _this2.$refs.email.value = response.data.data.email; //this.$refs.logo.value = response.data.data.logo;
       });
@@ -22929,9 +22925,7 @@ var render = function() {
         [
           _vm.errors.name
             ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n            " + _vm._s(_vm.errors.name[0]) + "\n          "
-                )
+                _vm._v("\n        " + _vm._s(_vm.errors.name[0]) + "\n      ")
               ])
             : _vm._e()
         ]
@@ -22959,9 +22953,7 @@ var render = function() {
           _vm.errors.email
             ? _c("span", { staticClass: "label label-danger" }, [
                 _vm._v(
-                  " \n            " +
-                    _vm._s(_vm.errors.email[0]) +
-                    " \n          "
+                  " \n        " + _vm._s(_vm.errors.email[0]) + " \n      "
                 )
               ])
             : _vm._e()
@@ -22993,9 +22985,7 @@ var render = function() {
           _vm.errors.password
             ? _c("span", { staticClass: "label label-danger" }, [
                 _vm._v(
-                  " \n            " +
-                    _vm._s(_vm.errors.password[0]) +
-                    " \n          "
+                  " \n        " + _vm._s(_vm.errors.password[0]) + " \n      "
                 )
               ])
             : _vm._e()
@@ -23027,7 +23017,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("\n          Submit\n        ")]
+        [_vm._v("\n      Submit\n    ")]
       )
     ])
   ])
@@ -23109,7 +23099,7 @@ var render = function() {
               "router-link",
               {
                 attrs: {
-                  to: { name: "update-user", params: { userId: user.id } }
+                  to: { name: "update-user", params: { acctUserId: user.id } }
                 }
               },
               [

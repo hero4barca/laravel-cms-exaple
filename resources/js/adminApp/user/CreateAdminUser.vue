@@ -34,11 +34,7 @@
 
           </div>
 
-                          <!-- 
-          <div class="form-group">
-            <input type="select" ref="company_id" class="form-control" id="company_id" placeholder="Selecet Company" required>
-          </div>
-  --> 
+     
          
           <button type="submit" @click.prevent="create" class="btn btn-primary block">
             Submit

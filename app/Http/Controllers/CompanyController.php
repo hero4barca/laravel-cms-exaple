@@ -7,6 +7,8 @@ use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\CompanyResource;
+use App\Http\Resources\EmployeeResource;
+use App\Models\Employee;
 use App\Models\Role;
 use Validator;
 use Illuminate\Validation\Rule;
@@ -26,6 +28,13 @@ class CompanyController extends Controller
         return CompanyResource::collection(Company::latest()->paginate(5));
     }
 
+    public function employeesOfCompany(Request $request, User $user )
+    {
+        $userCompany = Company::where('user_id', $user->id)->first();
+
+        return EmployeeResource::collection(Employee::where('company_id', $userCompany->id) ->get());
+    }
+   
     /** retures a list of all companies */
     public function all()
     {

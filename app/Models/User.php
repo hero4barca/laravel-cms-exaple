@@ -70,4 +70,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Company::class)->withDefault();
     }
+
+    public function employee()
+    {
+        return $this->hasOne(Employee::class)->withDefault();
+    }
 }
