@@ -65,7 +65,7 @@ class EmployeeController extends Controller
               [ 
                 'company' => 'required|exists:App\Models\Company,id',
                 'name' => 'required',
-                'email' => 'required|unique:users,email',
+                'email' => 'email|required|unique:users,email',
                 'password'=> 'required',
              ]);  
              
@@ -177,7 +177,7 @@ class EmployeeController extends Controller
         [ 
             'company' => 'sometimes|nullable|exists:App\Models\Company,id',
             'name' => 'required',
-            'email' => ['required', Rule::unique('users')->ignore($employee->user_id),], 
+            'email' => ['required','max:255', 'email', Rule::unique('users')->ignore($employee->user_id),], 
             
          ]);  
          
@@ -201,7 +201,7 @@ class EmployeeController extends Controller
             
             return new EmployeeResource($employee);
         }
-        else // return the response from update_user to the caller; error mgs for user fields
+        else // return the response from update_user to the caller; error mgs for update controller method
             {
                 return $updateUserResponse;
             }

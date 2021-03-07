@@ -23,7 +23,7 @@ class Controller extends BaseController
         $validator = Validator::make($request->all(), 
         [ 
             'name' => 'required',
-            'email' => 'required|unique:users,email',
+            'email' => 'email|required|unique:users,email',
             'password'=> 'required',
             'role_id' => 'required|exists:App\Models\Role,id',   
           
@@ -57,7 +57,7 @@ class Controller extends BaseController
         $validator = Validator::make($request->all(), 
         [
             'name' => 'required',
-            'email' => ['required', Rule::unique('users')->ignore($user->id),], 
+            'email' => ['required','max:255', 'email', Rule::unique('users')->ignore($user->id),], 
             
         
         ]);

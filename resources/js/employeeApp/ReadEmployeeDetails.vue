@@ -19,7 +19,7 @@
                Created At: {{employee.created_at }}
                <br/> </p> 
 
-                <router-link :to="{ name: 'update-employee', params: { employeeId : employee.id } }">
+                <router-link :to="{ name: 'update-employee-details', params: { employeeId : employee.id } }">
                     <button type="button" class="p-1 mx-3 float-right btn btn-light">
                         Update
                     </button>
