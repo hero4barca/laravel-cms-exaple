@@ -9,6 +9,7 @@ use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Resources\EmployeeResource;
 use Validator;
+use Illuminate\Validation\Rule;
 
 class EmployeeController extends Controller
 {
@@ -60,7 +61,7 @@ class EmployeeController extends Controller
 
         $validator = Validator::make($request->all(), 
               [ 
-                'company_id' => 'required|exists:App\Models\Company,id',
+                'company' => 'required|exists:App\Models\Company,id',
                 'name' => 'required',
                 'email' => 'required|unique:users,email',
                 'password'=> 'required',
@@ -83,7 +84,7 @@ class EmployeeController extends Controller
             $employee = new Employee();
 
             $employee->user_id = $storeUserResponse->id;
-            $employee->company_id = $request->company_id;
+            $employee->company_id = $request->company;
             $employee->save();
 
             return new EmployeeResource($employee);
@@ -105,14 +106,15 @@ class EmployeeController extends Controller
     {
         $validator = Validator::make($request->all(), 
         [ 
-          'company_id' => 'required|exists:App\Models\Company,id',
+          'company' => 'required|exists:App\Models\Company,id',
         ]);  
        
         if ($validator->fails()) {          
           return response()->json(['error'=>$validator->errors()], 401);                        
         }  
 
-        $employee->update($request->only(['company_id']));
+        
+        $employee->update(['company_id' => $request->company]);
 
         return new EmployeeResource($employee);
 
@@ -161,14 +163,32 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
+    
+    $validator = Validator::make($request->all(),
+        [ 
+            'company' => 'sometimes|nullable|exists:App\Models\Company,id',
+            'name' => 'required',
+            'email' => ['required', Rule::unique('users')->ignore($employee->user_id),], 
+            
+         ]);  
+         
+    if ($validator->fails()) {          
+            return response()->json(['error'=>$validator->errors()], 401);                        
+         }  
+        
+        
         //update the corresponding user object
-        $employeeUser = User::find($employee->user_id);
+         $employeeUser = User::find($employee->user_id);
         $updateUserResponse = $this->update_user($request, $employeeUser);
          
         
         if(isset($updateUserResponse->id))  // if the response is a serialized user object
         {
-
+            if($request->company)
+            {
+            
+                $employee->update(['company_id' => $request->company]);  
+            }
             
             return new EmployeeResource($employee);
         }

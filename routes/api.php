@@ -25,3 +25,5 @@ Route::patch('/employees/{employee}/set_company', 'App\Http\Controllers\Employee
 
 Route::apiResources(['users' => 'App\Http\Controllers\UserController'], ['except' => ['delete']]);
 Route::patch('/users/{user}/change_password', 'App\Http\Controllers\UserController@change_password');
+Route::post('/users/create_admin', 'App\Http\Controllers\UserController@store_admin');
+

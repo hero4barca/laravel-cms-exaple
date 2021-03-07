@@ -28,29 +28,19 @@
 
           </div>
 
-          <div class="form-group">
-            <input type="url" ref="url" class="form-control" id="url"  required>
-
-            <div :class="['form-group m-1 p-3', errors.url ? 'alert-danger' : '']">
-            <span v-if="errors.url" class="label label-danger">
-              {{ errors.url[0] }}
-            </span>
-            </div>
-
-          </div>
+          
 
           <div class="custom-file mb-3">
-
+            <select ref="company" class="form-control" :required="true">
+                  <option value="">Choose company..</option>
+                  <option 
+                  v-for="company in companies" 
+                  v-bind:value="company.id"
+                  
+                  >{{ company.name }}</option>
+                </select>
             
-            <input type="file" ref="logo" name="logo" class="custom-file-input" id="logo" required>
-            <label class="custom-file-label" >{{ }}</label>
-
-            <div :class="['form-group m-1 p-3', errors.logo ? 'alert-danger' : '']">
-            <span v-if="errors.logo" class="label label-danger">
-              {{ errors.logo[0] }}
-            </span>
-            </div>
-
+            
           </div>
           
 
@@ -64,26 +54,33 @@
     <script>
     export default {
       mounted() {
-        this.getCompany();
+        this.getEmployee();
+        this.getCompanies();
       },
       props: {
-        companyId: {
+        employeeId: {
           type: Number,
           required: true
         }
       },
       data() {
         return {
+          companies: {},
           error: false,
           successful: false,
           errors: []
         };
       },
       methods: {
+        getCompanies(address) {
+          axios.get(address ? address : "/api/companies").then(response => {
+            this.companies = response.data.data;
+          });
+        },
         update() {
           let name = this.$refs.name.value;
-          let url = this.$refs.url.value;
-          let logo = this.$refs.logo.value;
+          let company = this.$refs.company.value;
+         
           let email = this.$refs.email.value;
 
           const axiosParams = {
@@ -92,10 +89,10 @@
                 'Accept': 'application/json',
                 'Access-Control-Allow-Origin': 'always', 
               },
-            params: { name, email, url, logo} };
+            params: { name, email, company} };
 
           axios
-            .put("/api/companies/" + this.companyId, { name, email, url, logo} )
+            .put("/api/employees/" + this.employeeId, { name, email, company} )
             .then(response => {
               this.successful = true;
               this.error = false;
@@ -111,11 +108,11 @@
               }
             });
         },
-        getCompany() {
-          axios.get("/api/companies/" + this.companyId).then(response => {
+        getEmployee() {
+          axios.get("/api/employees/" + this.employeeId).then(response => {
             this.$refs.name.value = response.data.data.name;
             this.$refs.email.value = response.data.data.email;
-            this.$refs.url.value = response.data.data.url;
+            this.$refs.company.value = response.data.data.company_id;
             //this.$refs.logo.value = response.data.data.logo;
           });
         }

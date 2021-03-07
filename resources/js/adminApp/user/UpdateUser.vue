@@ -28,31 +28,7 @@
 
           </div>
 
-          <div class="form-group">
-            <input type="url" ref="url" class="form-control" id="url"  required>
-
-            <div :class="['form-group m-1 p-3', errors.url ? 'alert-danger' : '']">
-            <span v-if="errors.url" class="label label-danger">
-              {{ errors.url[0] }}
-            </span>
-            </div>
-
-          </div>
-
-          <div class="custom-file mb-3">
-
-            
-            <input type="file" ref="logo" name="logo" class="custom-file-input" id="logo" required>
-            <label class="custom-file-label" >{{ }}</label>
-
-            <div :class="['form-group m-1 p-3', errors.logo ? 'alert-danger' : '']">
-            <span v-if="errors.logo" class="label label-danger">
-              {{ errors.logo[0] }}
-            </span>
-            </div>
-
-          </div>
-          
+           
 
           <button type="submit" @click.prevent="update" class="btn btn-primary block">
             Submit
@@ -64,26 +40,27 @@
     <script>
     export default {
       mounted() {
-        this.getCompany();
+        this.getUser();
+        
       },
       props: {
-        companyId: {
+        userId: {
           type: Number,
           required: true
         }
       },
       data() {
         return {
+        
           error: false,
           successful: false,
           errors: []
         };
       },
       methods: {
+        
         update() {
-          let name = this.$refs.name.value;
-          let url = this.$refs.url.value;
-          let logo = this.$refs.logo.value;
+          let name = this.$refs.name.value;         
           let email = this.$refs.email.value;
 
           const axiosParams = {
@@ -92,10 +69,10 @@
                 'Accept': 'application/json',
                 'Access-Control-Allow-Origin': 'always', 
               },
-            params: { name, email, url, logo} };
+            params: { name, email} };
 
           axios
-            .put("/api/companies/" + this.companyId, { name, email, url, logo} )
+            .put("/api/users/" + this.userId, { name, email} )
             .then(response => {
               this.successful = true;
               this.error = false;
@@ -111,11 +88,10 @@
               }
             });
         },
-        getCompany() {
-          axios.get("/api/companies/" + this.companyId).then(response => {
+        getUser() {
+          axios.get("/api/users/" + this.userId).then(response => {
             this.$refs.name.value = response.data.data.name;
             this.$refs.email.value = response.data.data.email;
-            this.$refs.url.value = response.data.data.url;
             //this.$refs.logo.value = response.data.data.logo;
           });
         }

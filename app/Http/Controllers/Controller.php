@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use Validator;
+use Illuminate\Validation\Rule;
 
 class Controller extends BaseController
 {
@@ -56,7 +57,7 @@ class Controller extends BaseController
         $validator = Validator::make($request->all(), 
         [
             'name' => 'required',
-            'email' => 'required|unique:users,email',
+            'email' => ['required', Rule::unique('users')->ignore($user->id),], 
             
         
         ]);

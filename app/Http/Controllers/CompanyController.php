@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\CompanyResource;
 use App\Models\Role;
 use Validator;
+use Illuminate\Validation\Rule;
 
 class CompanyController extends Controller
 {
@@ -160,10 +161,9 @@ class CompanyController extends Controller
         $validator = Validator::make($request->all(), 
          [
             'url' => 'required',
-            'logo' => 'required|mimes:jpeg,png,jpg,gif,svg',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'name' => 'required',
-            'email' => 'required|unique:users,email',
-            
+            'email' => ['required', Rule::unique('users')->ignore($company->user_id),],      
                                    
         ]);
 
@@ -178,11 +178,18 @@ class CompanyController extends Controller
         if(isset($updateUserResponse->id))  // if the response is a serialized user object
         {
             $new_url = $request->url;
-            $new_logo = $this->store_logo($request);
 
+            if($request->file('logo'))
+            {
+            $new_logo = $this->store_logo($request);
+            $company->update(['logo' => $new_logo]);  
+            }
+            
             
             $company->update(['url' => $new_url]);
-            $company->update(['logo' => $new_logo]);
+
+            
+           
 
             return new CompanyResource($company);
         }

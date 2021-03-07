@@ -3,7 +3,7 @@
         
         <form>
           <div :class="['form-group m-1 p-3', (successful ? 'alert-success' : '')]">
-            <span v-if="successful" class="label label-sucess">Company created!</span>
+            <span v-if="successful" class="label label-sucess">Employee created!</span>
           </div>
 
           <div :class="['form-group m-1 p-3', errors.name ? 'alert-danger' : '']">
@@ -34,26 +34,26 @@
 
           </div>
 
-          <div :class="['form-group m-1 p-3', errors.url ? 'alert-danger' : '']">
-            <span v-if="errors.url" class="label label-danger"> 
-              {{ errors.url[0] }} 
+          <div :class="['form-group m-1 p-3', errors.company ? 'alert-danger' : '']">
+            <span v-if="errors.company" class="label label-danger"> 
+              {{ errors.company[0] }} 
             </span>
 
             </div>
+            <select ref="company" class="form-control" :required="true">
+                  <option value="">Choose company..</option>
+                  <option 
+                  v-for="company in companies" 
+                  v-bind:value="company.id"
+                  
+                  >{{ company.name }}</option>
+                </select>
+                          <!-- 
           <div class="form-group">
-            <input type="url" ref="url" class="form-control" id="url" placeholder="Website url" required>
+            <input type="select" ref="company_id" class="form-control" id="company_id" placeholder="Selecet Company" required>
           </div>
-
+  --> 
          
-          <div :class="['form-group m-1 p-3', errors.logo ? 'alert-danger' : '']">
-            <span v-if="errors.logo" class="label label-danger"> 
-              {{ errors.logo[0] }} 
-            </span>
-            </div>
-          <div class="custom-file mb-3">
-            <input type="file" ref="logo" name="logo" class="custom-file-input" id="logo" required>
-            <label class="custom-file-label" >Choose file...</label>
-          </div>
 
           <button type="submit" @click.prevent="create" class="btn btn-primary block">
             Submit
@@ -69,8 +69,12 @@
       props: {
         
       },
+      mounted() {
+        this.getCompanies();
+      },
       data() {
         return {
+          companies: {},
           error: false,
           successful: false,
           errors: []
@@ -79,6 +83,11 @@
         };
       },
       methods: {
+        getCompanies(address) {
+          axios.get(address ? address : "/api/companies").then(response => {
+            this.companies = response.data.data;
+          });
+        },
         create() {
           const formData = new FormData();
 
@@ -87,8 +96,8 @@
           formData.append("password", this.$refs.password.value);
           
           
-          formData.append("logo", this.$refs.logo.files[0]);
-          formData.append("url", this.$refs.url.value);
+          
+          formData.append("company", this.$refs.company.value);
 
             const axiosParams = {
               headers: {
@@ -99,7 +108,7 @@
             params: formData };
 
           axios
-            .post("/api/companies", formData)
+            .post("/api/employees", formData)
             .then(response => {
               this.successful = true;
               this.error = false;
@@ -109,8 +118,7 @@
               this.$refs.name.value = "";
               this.$refs.email.value = "";
               this.$refs.password.value = "";
-              this.$refs.logo.value = "";
-              this.$refs.url.value = "";
+              this.$refs.company.value = "";
 
             })
             .catch(error => {

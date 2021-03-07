@@ -3,7 +3,7 @@
         
         <form>
           <div :class="['form-group m-1 p-3', (successful ? 'alert-success' : '')]">
-            <span v-if="successful" class="label label-sucess">Company created!</span>
+            <span v-if="successful" class="label label-sucess">Admin created!</span>
           </div>
 
           <div :class="['form-group m-1 p-3', errors.name ? 'alert-danger' : '']">
@@ -12,7 +12,7 @@
             </span>
             </div>
           <div class="form-group">
-            <input type="name" ref="name" class="form-control" id="name" placeholder="Enter company name" required>
+            <input type="name" ref="name" class="form-control" id="name" placeholder="Admin's name" required>
           </div>
 
           <div :class="['form-group m-1 p-3', errors.email ? 'alert-danger' : '']">
@@ -21,7 +21,7 @@
             </span>
             </div>
           <div class="form-group">
-            <input type="email" ref="email" class="form-control" id="email" placeholder="Enter company email" required>
+            <input type="email" ref="email" class="form-control" id="email" placeholder="Enter Admin's email" required>
           </div>
 
           <div :class="['form-group m-1 p-3', errors.password ? 'alert-danger' : '']">
@@ -34,27 +34,12 @@
 
           </div>
 
-          <div :class="['form-group m-1 p-3', errors.url ? 'alert-danger' : '']">
-            <span v-if="errors.url" class="label label-danger"> 
-              {{ errors.url[0] }} 
-            </span>
-
-            </div>
+                          <!-- 
           <div class="form-group">
-            <input type="url" ref="url" class="form-control" id="url" placeholder="Website url" required>
+            <input type="select" ref="company_id" class="form-control" id="company_id" placeholder="Selecet Company" required>
           </div>
-
+  --> 
          
-          <div :class="['form-group m-1 p-3', errors.logo ? 'alert-danger' : '']">
-            <span v-if="errors.logo" class="label label-danger"> 
-              {{ errors.logo[0] }} 
-            </span>
-            </div>
-          <div class="custom-file mb-3">
-            <input type="file" ref="logo" name="logo" class="custom-file-input" id="logo" required>
-            <label class="custom-file-label" >Choose file...</label>
-          </div>
-
           <button type="submit" @click.prevent="create" class="btn btn-primary block">
             Submit
           </button>
@@ -69,8 +54,12 @@
       props: {
         
       },
+      mounted() {
+        
+      },
       data() {
         return {
+          
           error: false,
           successful: false,
           errors: []
@@ -79,16 +68,14 @@
         };
       },
       methods: {
+        
         create() {
           const formData = new FormData();
 
           formData.append("name", this.$refs.name.value);
           formData.append("email", this.$refs.email.value);
-          formData.append("password", this.$refs.password.value);
+          formData.append("password", this.$refs.password.value);          
           
-          
-          formData.append("logo", this.$refs.logo.files[0]);
-          formData.append("url", this.$refs.url.value);
 
             const axiosParams = {
               headers: {
@@ -99,7 +86,7 @@
             params: formData };
 
           axios
-            .post("/api/companies", formData)
+            .post("/api/users/create_admin", formData)
             .then(response => {
               this.successful = true;
               this.error = false;
@@ -109,8 +96,7 @@
               this.$refs.name.value = "";
               this.$refs.email.value = "";
               this.$refs.password.value = "";
-              this.$refs.logo.value = "";
-              this.$refs.url.value = "";
+              
 
             })
             .catch(error => {

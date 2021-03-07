@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use Validator;
@@ -38,6 +39,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {   
+        return $this->store_user($request);
+
+    }
+
+    /**
+     * Store a newly created admin user object in storage.
+     *  role_id of "admin" is added by this function
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store_admin(Request $request)
+    {   
+        //get company role_id form role model
+        $admin_role_id = Role::where('name', 'admin') ->value('id');
+        $request->request->set('role_id', $admin_role_id);
         return $this->store_user($request);
 
     }
