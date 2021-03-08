@@ -13,18 +13,18 @@
       
       <p class="lead">Company Employees</p>
 
-      {{-- Company employee detail block}}
+       Company employee detail block
       @foreach ($company->employees as $employee)
           <div class="card mb-4">
            
             <div class="card-body">
               <p class="card-title text-center">Employee Name: {{ $employee->user->name }}</p>
               <p class="card-title text-center">Employee Email: {{ $employee->user->email }}</p>
-              {{--<span class="text-center"> 
+              <span class="text-center"> 
               <a  href="/companies/{{ $company->id }}" class="btn btn-primary">Company page</a>
             </span> 
           </div>
-        @endforeach--}}
+        @endforeach
         
     </div>
   </div>

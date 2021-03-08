@@ -1919,22 +1919,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   computed: {
     myProps: function myProps() {
@@ -2014,9 +1998,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     userId: {
@@ -2060,7 +2041,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
 //
 //
 //
@@ -2209,10 +2189,8 @@ __webpack_require__.r(__webpack_exports__);
 // Imports
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Dosis:300|Lato:300,400,600,700|Roboto+Condensed:300,700|Open+Sans+Condensed:300,600|Open+Sans:400,300,600,700|Maven+Pro:400,700);"]);
-___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n*[data-v-4e7342c7] {\n  box-sizing: border-box;\n}\nheader[data-v-4e7342c7] {\n  color: #d3d3d3;\n}\nnav[data-v-4e7342c7] {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  right: 82%;\n  left: 0;\n  padding: 22px;\n  border-right: 2px solid #161e23;\n}\nnav > header[data-v-4e7342c7] {\n  font-weight: 700;\n  font-size: 0.8rem;\n  text-transform: uppercase;\n}\nnav section[data-v-4e7342c7] {\n  font-weight: 600;\n}\nnav section header[data-v-4e7342c7] {\n  padding-top: 30px;\n}\nnav section ul[data-v-4e7342c7] {\n  list-style: none;\n  padding: 0px;\n}\nnav section ul a[data-v-4e7342c7] {\n  color: white;\n  text-decoration: none;\n  font-weight: bold;\n}\narticle[data-v-4e7342c7] {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  left: 18%;\n  overflow: auto;\n  border-left: 2px solid #2a3843;\n  padding: 20px;\n}\narticle > header[data-v-4e7342c7] {\n  height: 60px;\n  border-bottom: 1px solid #2a3843;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.article[data-v-4e7342c7]{\n  position: absolute;\n  overflow: auto;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -20257,82 +20235,168 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("nav", [
-      _c("section", [
-        _c("a", { staticStyle: { color: "white" }, attrs: { href: "/" } }, [
-          _vm._v("HOME")
+  return _c("div", { staticClass: "d-flex", attrs: { id: "wrapper" } }, [
+    _c(
+      "div",
+      {
+        staticClass: "bg-light border-right",
+        attrs: { id: "sidebar-wrapper" }
+      },
+      [
+        _c("div", { staticClass: "sidebar-heading" }, [
+          _vm._v("Employee Account ")
         ]),
-        _vm._v("  ||   \n      "),
+        _vm._v(" "),
         _c(
-          "a",
-          {
-            staticStyle: { color: "white" },
-            attrs: { href: "/employee/profile" }
-          },
-          [_vm._v("Dashboard")]
-        ),
-        _vm._v(" "),
-        _c("hr"),
-        _vm._v(" "),
-        _c("ul", [
+          "div",
+          { staticClass: "list-group list-group-flush" },
+          [
+            _c(
+              "router-link",
+              {
+                attrs: {
+                  to: {
+                    name: "read-employee-details",
+                    params: { userId: _vm.userId }
+                  }
+                }
+              },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "list-group-item list-group-item-action bg-light"
+                  },
+                  [_vm._v("Employee profile")]
+                )
+              ]
+            )
+          ],
+          1
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", { attrs: { id: "page-content-wrapper" } }, [
+      _c(
+        "nav",
+        {
+          staticClass:
+            "navbar navbar-expand-lg navbar-light bg-light border-bottom"
+        },
+        [
           _c(
-            "li",
-            [
-              _c(
-                "router-link",
-                { attrs: { to: { name: "read-employee-details" } } },
-                [_vm._v("\n             Employee details\n           ")]
-              )
-            ],
-            1
+            "button",
+            { staticClass: "btn btn-primary", attrs: { id: "menu-toggle" } },
+            [_vm._v("Toggle Menu")]
           ),
           _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
           _c(
-            "li",
+            "div",
+            {
+              staticClass: "collapse navbar-collapse",
+              attrs: { id: "navbarSupportedContent" }
+            },
             [
-              _c(
-                "router-link",
-                {
-                  attrs: {
-                    to: { name: "create", params: { userId: _vm.userId } }
-                  }
-                },
-                [_vm._v("\n             Update\n           ")]
-              )
-            ],
-            1
+              _c("ul", { staticClass: "navbar-nav ml-auto mt-2 mt-lg-0" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("li", { staticClass: "nav-item dropdown" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link dropdown-toggle",
+                      attrs: {
+                        href: "#",
+                        id: "navbarDropdown",
+                        role: "button",
+                        "data-toggle": "dropdown",
+                        "aria-haspopup": "true",
+                        "aria-expanded": "false"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n              " +
+                          _vm._s(_vm.userName) +
+                          "\n            "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "dropdown-menu dropdown-menu-right",
+                      attrs: { "aria-labelledby": "navbarDropdown" }
+                    },
+                    [
+                      _c("div", { staticClass: "dropdown-divider" }),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          staticClass: "dropdown-item",
+                          attrs: { href: "#" },
+                          on: { click: _vm.logout }
+                        },
+                        [_vm._v("Logout")]
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ]
           )
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("article", [
-      _c("header", [
-        _c("header", { staticClass: "d-inline" }, [
-          _vm._v("Welcome, " + _vm._s(_vm.userName))
-        ]),
-        _vm._v(" "),
-        _c(
-          "p",
-          {
-            staticClass: "float-right mr-3",
-            staticStyle: { cursor: "pointer" },
-            on: { click: _vm.logout }
-          },
-          [_vm._v("Logout")]
-        )
-      ]),
+        ]
+      ),
       _vm._v(" "),
-      _c(
-        "div",
-        [_c("router-view", _vm._b({}, "router-view", _vm.myProps, false))],
-        1
-      )
+      _c("div", { staticClass: "container-fluid article" }, [
+        _c(
+          "div",
+          [_c("router-view", _vm._b({}, "router-view", _vm.myProps, false))],
+          1
+        )
+      ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarSupportedContent",
+          "aria-controls": "navbarSupportedContent",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }
+      },
+      [_c("span", { staticClass: "navbar-toggler-icon" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "nav-item active" }, [
+      _c("a", { staticClass: "nav-link", attrs: { href: "/" } }, [
+        _vm._v("Home "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("(current)")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -20357,61 +20421,58 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "employee" } }, [
     _c("div", [
-      _c(
-        "div",
-        { staticClass: "border details-div" },
-        [
-          _c("p", [
-            _vm._v(
-              " Employee Name: " + _vm._s(_vm.employee.name) + " \n       "
-            ),
-            _c("br"),
-            _vm._v(
-              "\n\n       Employer (company): " +
-                _vm._s(_vm.employee.company) +
-                "\n       "
-            ),
-            _c("br"),
-            _vm._v(
-              "\n       \n       Employee Email: " +
-                _vm._s(_vm.employee.email) +
-                "\n       "
-            ),
-            _c("br"),
-            _vm._v(
-              "\n       Created At: " +
-                _vm._s(_vm.employee.created_at) +
-                "\n       "
-            ),
-            _c("br")
-          ]),
-          _vm._v(" "),
-          _c(
-            "router-link",
-            {
-              attrs: {
-                to: {
-                  name: "update-employee-details",
-                  params: { employeeId: _vm.employee.id }
-                }
-              }
-            },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "p-1 mx-3 float-right btn btn-light",
-                  attrs: { type: "button" }
-                },
-                [_vm._v("\n                Update\n            ")]
+      _c("div", { staticClass: "card details-div text-center" }, [
+        _c("div", { staticClass: "card-header " }, [
+          _c("b", [
+            _c("h4", [
+              _vm._v("Employee Name: " + _vm._s(_vm.employee.name) + " ")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "card-body" },
+          [
+            _c("h5", { staticClass: "card-title " }, [
+              _vm._v(
+                "Employer (company): " + _vm._s(_vm.employee.company) + " "
               )
-            ]
-          ),
-          _vm._v(" "),
-          _c("br")
-        ],
-        1
-      )
+            ]),
+            _vm._v(" "),
+            _c("h6", { staticClass: "card-subtitle  mb-2 text-muted" }, [
+              _vm._v(" Employee Email: " + _vm._s(_vm.employee.email))
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text " }, [
+              _vm._v("Created At: " + _vm._s(_vm.employee.created_at))
+            ]),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                attrs: {
+                  to: {
+                    name: "update-employee-details",
+                    params: { employeeId: _vm.employee.id }
+                  }
+                }
+              },
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass: "p-1 mx-3  btn btn-primary",
+                    attrs: { type: "button" }
+                  },
+                  [_vm._v("\n                Update\n            ")]
+                )
+              ]
+            )
+          ],
+          1
+        )
+      ])
     ])
   ])
 }

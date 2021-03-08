@@ -26,7 +26,7 @@ Auth::routes(['register' => false]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', 'App\Http\Controllers\CompanyController@all');
-Route::get('/companies/{company}', 'App\Http\Controllers\CompanyController@getSingle');
+//Route::get('/companies/{company}', 'App\Http\Controllers\CompanyController@getSingle');
 
 Route::get('/admin/{any}', 'App\Http\Controllers\AdminController@index')->where('any', '.*');
 Route::get('/company/{any}', 'App\Http\Controllers\CompanyAccountController@index')->where('any', '.*');

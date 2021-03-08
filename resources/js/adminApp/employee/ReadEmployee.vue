@@ -5,7 +5,7 @@
 
           <div>
             <router-link :to="{ name: 'create-employee', params:{} }">
-                    <button type="button" class="p-1 mx-3 float-left btn btn-light">
+                    <button type="button" class="p-1 mx-3 btn btn-light">
                         New Employee
                     </button>
                 </router-link>
@@ -13,32 +13,32 @@
         
           <div>
 
-            <div class="border details-div" v-for="employee in employees">
-              <p> Employee Name: {{ employee.name }} 
-               <br/>
+              <div class="card details-div text-center" v-for="employee in employees"  >
+                <div class="card-header ">
+                 <b><h4>Employee Name: {{ employee.name }} </h4> </b>                </div>
 
-               Employer (company): {{ employee.company}}
-               <br/>
-               
-               Employee Email: {{ employee.email}}
-               <br/>
-               Created At: {{employee.created_at }}
-               <br/> </p> 
+                
 
-                <router-link :to="{ name: 'update-employee', params: { employeeId : employee.id } }">
-                    <button type="button" class="p-1 mx-3 float-right btn btn-light">
-                        Update
+                <div class="card-body">
+                  <h5 class="card-title " >Employer (company): {{ employee.company}} </h5>
+                  <h6 class="card-subtitle  mb-2 text-muted"> Employee Email: {{ employee.email}}</h6>
+                  <p class="card-text ">Created At: {{employee.created_at }}</p>
+
+                  
+                  <router-link :to="{ name: 'update-employee', params: { employeeId : employee.id } }">
+                    <button type="button" class="p-1 mx-3  btn btn-primary">
+                              Update
                     </button>
-                </router-link>
-                <button 
-                    type="button" 
-                    @click="deleteEmployee(employee.id)" 
-                    class="p-1 mx-3 float-right btn btn-danger"
-                >
-                    Delete
-                </button>
-                <br/>
-            </div>
+                  </router-link>
+
+                  <button type="button"   
+                        @click="deleteCompany(employee.id)"                  
+                        class="p-1 mx-3  btn btn-danger" >
+                        Delete
+                    </button>
+                    
+                </div>
+              </div>
 
           </div>
 

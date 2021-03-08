@@ -5,7 +5,7 @@
 
           <div>
             <router-link :to="{ name: 'create-admin-user', params:{} }">
-                    <button type="button" class="p-1 mx-3 float-left btn btn-light">
+                    <button type="button" class="p-1 mx-3 btn btn-light">
                         create new admin
                     </button>
                 </router-link>
@@ -13,33 +13,34 @@
         
           <div>
 
-            <div class="border details-div" v-for="user in users">
-              <p> User Name: {{ user.name }} 
-               <br/>
+             <div class="card details-div text-center" v-for="user in users"  >
+                <div class="card-header ">
+                 <b><h4>User Name: {{ user.name }} </h4> </b> 
+                 </div>
 
-               User Type (role): {{ user.role}}
-               <br/>
-               
-               User Email: {{ user.email}}
-               <br/>
-               Created At: {{user.created_at }}
-               <br/> </p> 
+                
 
-                <router-link :to="{ name: 'update-user', params: { acctUserId : user.id } }">
-                    <button type="button" class="p-1 mx-3 float-right btn btn-light">
-                        Update
+                <div class="card-body">
+                  <h5 class="card-title " >User Type (role): {{ user.role}}} </h5>
+                  <h6 class="card-subtitle  mb-2 text-muted"> User Email: {{ user.email}}</h6>
+                  <p class="card-text ">Created At: {{user.created_at }}</p>
+
+                  
+                  <router-link :to="{ name: 'update-user', params: { acctUserId : user.id } }">
+                    <button type="button" class="p-1 mx-3  btn btn-primary">
+                              Update
                     </button>
-                </router-link>
-                <button 
-                    type="button" 
-                    @click="deleteUser(user.id)" 
-                    class="p-1 mx-3 float-right btn btn-danger"
-                >
-                    Delete
-                </button>
-                <br/>
-            </div>
+                  </router-link>
 
+                  <button type="button"   
+                        @click="deleteCompany(user.id)"                  
+                        class="p-1 mx-3  btn btn-danger" >
+                        Delete
+                    </button>
+                    
+                </div>
+              </div>
+                  
           </div>
 
 

@@ -4,7 +4,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Homepage from './companyApp/CompanyHome.vue'
 import CompanyProfile from './companyApp/CompanyProfile.vue'
-import Example from './companyApp/ExampleComponent.vue'
+
 
 
 Vue.use(VueRouter)
@@ -18,12 +18,7 @@ const router = new VueRouter({
           component: CompanyProfile,
           props: true
         },
-        {
-            path: '/company/example',
-            name: 'example',
-            component: Example,
-            props: true
-          },
+        
     ],
 });
 

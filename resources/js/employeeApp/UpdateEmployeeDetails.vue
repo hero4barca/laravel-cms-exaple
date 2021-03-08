@@ -26,8 +26,7 @@
             </span>
             </div>
 
-          </div>
-          
+          </div>          
 
           <button type="submit" @click.prevent="update" class="btn btn-primary block">
             Submit

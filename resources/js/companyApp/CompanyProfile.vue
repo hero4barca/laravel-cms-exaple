@@ -6,19 +6,21 @@
         
           <div>
 
-            <div class="border details-div" v-for="employee in employees">
-              <p> Employee Name: {{ employee.name }} 
-               <br/>
+            <div class="card details-div text-center" v-for="employee in employees"  >
+                <div class="card-header ">
+                 <b><h4>Employee Name: {{ employee.name }} </h4> </b>                </div>
 
-               Employer (company): {{ employee.company}}
-               <br/>
-               
-               Employee Email: {{ employee.email}}
-               <br/>
-               Created At: {{employee.created_at }}
-               <br/> </p> 
+                
 
-            </div>
+                <div class="card-body">
+                  <h5 class="card-title " >Employer (company): {{ employee.company}} </h5>
+                  <h6 class="card-subtitle  mb-2 text-muted"> Employee Email: {{ employee.email}}</h6>
+                  <p class="card-text ">Created At: {{employee.created_at }}</p>
+                  
+                    
+                </div>
+              </div>
+
 
           </div>
 
@@ -44,6 +46,7 @@
 
 
         </div>
+
     </template>
      <script>
     export default {
@@ -73,12 +76,9 @@
           axios.get(address ? address : "/api/companies/" + this.userId + "/company_employees")
           .then(response => {
             this.employees = response.data.data;
-            this.prev = response.data.links.prev;
-            this.next = response.data.links.next;
+            //this.prev = response.data.links.prev;
+            //this.next = response.data.links.next;
           });
-        },
-        deleteEmployee(id) {
-          axios.delete("/api/employees/" + id).then(response => this.getCompanyEmployees())
         },
         navigate(address) {
           this.getCompanyEmployees(address)

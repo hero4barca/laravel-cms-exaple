@@ -12,7 +12,7 @@
             </span>
             </div>
           <div class="form-group">
-            <input type="name" ref="name" class="form-control" id="name" placeholder="Enter company name" required>
+            <input type="name" ref="name" class="form-control" id="name" placeholder="Enter employee name" required>
           </div>
 
           <div :class="['form-group m-1 p-3', errors.email ? 'alert-danger' : '']">
@@ -21,7 +21,7 @@
             </span>
             </div>
           <div class="form-group">
-            <input type="email" ref="email" class="form-control" id="email" placeholder="Enter company email" required>
+            <input type="email" ref="email" class="form-control" id="email" placeholder="Enter employee email" required>
           </div>
 
           <div :class="['form-group m-1 p-3', errors.password ? 'alert-danger' : '']">
