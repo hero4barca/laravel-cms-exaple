@@ -27,13 +27,13 @@ class CompanyTableSeeder extends Seeder
 
 
         $items = [            
-            ['id' => 2, 'user_id' => 6, 'url' => 'company2.com'],
-            ['id' => 3, 'user_id' => 7, 'url' => 'company3.com'],
-            ['id' => 4, 'user_id' => 8, 'url' => 'company4.com'],
-            ['id' => 5, 'user_id' => 9, 'url' => 'company5.com'],
-            ['id' => 6, 'user_id' => 10, 'url' => 'company6.com'],
-            ['id' => 7, 'user_id' => 11, 'url' => 'company7.com'],
-            ['id' => 8, 'user_id' => 12, 'url' => 'company8.com'],
+            ['id' => 2, 'user_id' => 8, 'url' => 'company2.com'],
+            ['id' => 3, 'user_id' => 9, 'url' => 'company3.com'],
+            ['id' => 4, 'user_id' => 10, 'url' => 'company4.com'],
+            ['id' => 5, 'user_id' => 11, 'url' => 'company5.com'],
+            ['id' => 6, 'user_id' => 12, 'url' => 'company6.com'],
+            ['id' => 7, 'user_id' => 13, 'url' => 'company7.com'],
+            ['id' => 8, 'user_id' => 14, 'url' => 'company8.com'],
         ];
     
         foreach ($items as $item) {

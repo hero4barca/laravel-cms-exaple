@@ -18,7 +18,7 @@ class RoleTableSeeder extends Seeder
         $items = [            
             ['id' => 1, 'name' => 'admin', 'description' => 'An admin user'],
             ['id' => 2, 'name' => 'company', 'description' => 'A company user'],
-            ['id' => 2, 'name' => 'employee', 'description' => 'An employee user'],
+            ['id' => 3, 'name' => 'employee', 'description' => 'An employee user'],
         ];
     
         foreach ($items as $item) {

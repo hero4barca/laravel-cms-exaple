@@ -20,9 +20,13 @@
                 <div class="card-header text-center">
                  <b><h4>Company Name: {{ company.name }} </h4> </b> 
                 </div>
-
+                <div v-if="company.logo_url === null">
+                    <img :src=" img_Placeholder" class="card-img-top"  alt="Card image cap">
+                  </div>
+                  <div v-else>
+                    <img :src="company.logo_url " class="card-img-top"  alt="Card image cap">
+                  </div>
                 <div class="">
-                <img :src="company.logo_url " class="card-img-top"  alt="Card image cap">
                 </div>
 
                 <div class="card-body">
@@ -80,7 +84,8 @@
         return {
           companies: {},
           next: null,
-          prev: null
+          prev: null,
+          img_Placeholder: "http://placehold.it/200x75",
         };
       },
       methods: {

@@ -2160,6 +2160,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     this.getCompanies();
@@ -2168,7 +2172,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       companies: {},
       next: null,
-      prev: null
+      prev: null,
+      img_Placeholder: "http://placehold.it/200x75"
     };
   },
   methods: {
@@ -21800,12 +21805,21 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", {}, [
-            _c("img", {
-              staticClass: "card-img-top",
-              attrs: { src: company.logo_url, alt: "Card image cap" }
-            })
-          ]),
+          company.logo_url === null
+            ? _c("div", [
+                _c("img", {
+                  staticClass: "card-img-top",
+                  attrs: { src: _vm.img_Placeholder, alt: "Card image cap" }
+                })
+              ])
+            : _c("div", [
+                _c("img", {
+                  staticClass: "card-img-top",
+                  attrs: { src: company.logo_url, alt: "Card image cap" }
+                })
+              ]),
+          _vm._v(" "),
+          _c("div", {}),
           _vm._v(" "),
           _c(
             "div",
