@@ -21,7 +21,7 @@
 
       body{        
         overflow-y: auto;
-             
+        overflow-x:hidden;     
              }
 
       .details-div{

@@ -14,9 +14,7 @@
               <p class="card-title text-center">Comapny Name: {{ $company->user->name }}</p>
               <p class="card-title text-center">Company Website: {{ $company->url }}</p>
               <p class="card-title text-center">Company Email: {{ $company->user->email }}</p>
-              <span class="text-center"> 
-              <a  href="/companies/{{ $company->id }}" class="btn btn-primary">Company page</a>
-            </span>
+              
           </div>
           </div>
           @endforeach

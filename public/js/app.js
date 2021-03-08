@@ -1924,7 +1924,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     userId: {
@@ -21469,8 +21468,6 @@ var render = function() {
             },
             [
               _c("ul", { staticClass: "navbar-nav ml-auto mt-2 mt-lg-0" }, [
-                _vm._m(1),
-                _vm._v(" "),
                 _c("li", { staticClass: "nav-item dropdown" }, [
                   _c(
                     "a",
@@ -21552,17 +21549,6 @@ var staticRenderFns = [
       },
       [_c("span", { staticClass: "navbar-toggler-icon" })]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item active" }, [
-      _c("a", { staticClass: "nav-link", attrs: { href: "/" } }, [
-        _vm._v("Home "),
-        _c("span", { staticClass: "sr-only" }, [_vm._v("(current)")])
-      ])
-    ])
   }
 ]
 render._withStripped = true
