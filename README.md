@@ -7,4 +7,4 @@ To get started:
     4   run "php artisan serve " and "npm run dev"
 
 
-NOTE: "npm update" may cause/require changes to in  .mix.js file 
+NOTE: "npm update" may cause/require changes to in  .mix.js file. Modify mix file to load .vue file for "module loader" error.  
