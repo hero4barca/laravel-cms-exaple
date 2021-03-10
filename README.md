@@ -8,3 +8,6 @@ To get started:
 
 
 NOTE: "npm update" may cause/require changes to in  .mix.js file. Modify mix file to load .vue file for "module loader" error.  
+
+admin: test@test.com
+pass: password
